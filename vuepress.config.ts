@@ -43,15 +43,15 @@ export default defineUserConfig({
                 link:'/basic-features/data-fetching/overview'
               },
               {
-                text:'获取服务器端属性',
+                text:'getServerSideProps',
                 link:'/basic-features/data-fetching/get-server-side-props'
               },
               {
-                text:'获取静态路径',
+                text:'getStaticPaths',
                 link:'/basic-features/data-fetching/get-static-paths'
               },
               {
-                text:'获取静态属性',
+                text:'getStaticProps',
                 link:'/basic-features/data-fetching/get-static-props'
               },
               {

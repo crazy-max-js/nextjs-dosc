@@ -55,7 +55,7 @@ export default defineUserConfig({
                 link:'/basic-features/data-fetching/get-static-props'
               },
               {
-                text:'增量静态再生',
+                text:'ISR',
                 link:'/basic-features/data-fetching/incremental-static-regeneration'
               },
               {

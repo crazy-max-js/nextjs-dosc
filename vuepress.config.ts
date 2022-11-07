@@ -63,7 +63,51 @@ export default defineUserConfig({
                 link:'/basic-features/data-fetching/client-side'
               }
             ]
-          }
+          },
+          {
+            text:'内置 CSS 支持',
+            link:'/basic-features/built-in-css-support'
+          },
+          {
+            text:'布局',
+            link:'/basic-features/layouts'
+          },
+          {
+            text:'图像优化',
+            link:'/basic-features/image-optimization'
+          },
+          {
+            text:'字体优化',
+            link:'/basic-features/font-optimization'
+          },
+          {
+            text:'静态文件服务',
+            link:'/basic-features/static-file-serving'
+          },
+          {
+            text:'快速刷新',
+            link:'/basic-features/fast-refresh'
+          },
+          {
+            text:'ESLint',
+            link:'/basic-features/eslint'
+          },
+          {
+            text:'TypeScript',
+            link:'/basic-features/typescript'
+          },
+          {
+            text:'环境变量',
+            link:'/basic-features/environment-variables'
+          },
+          {
+            text:'支持的浏览器和功能',
+            link:'/basic-features/supported-browsers-features'
+          },
+          {
+            text:'处理脚本',
+            link:'/basic-features/script'
+          },
         ]
       },
     ],

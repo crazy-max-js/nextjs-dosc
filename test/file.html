@@ -1,0 +1,180 @@
+<h1>Optimizing Fonts</h1>
+    <p><a href="/docs/api-reference/next/font" class="relative"><strong><code class="inline">@next/font</code></strong></a> will automatically optimize your fonts (including custom fonts) and remove external network requests for improved privacy and performance.</p>
+    <h2 class="heading"><span id="overview"></span><a href="#overview">Overview</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+    <p><code class="inline">@next/font</code> includes <strong>built-in automatic self-hosting</strong> for <em>any</em> font file. This means you can optimally load web fonts with zero layout shift, thanks to the underlying CSS <code class="inline">size-adjust</code> property used.</p>
+    <p>This new font system also allows you to conveniently use all Google Fonts with performance and privacy in mind. CSS and font files are downloaded at build time and self-hosted with the rest of your static assets. <strong>No requests are sent to Google by the browser.</strong></p>
+    <h2 class="heading"><span id="usage"></span><a href="#usage">Usage</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+    <p>To get started, install <code class="inline">@next/font</code>:</p>
+    <pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @next/font
+</code></pre>
+    <h3 class="heading"><span id="google-fonts"></span><a href="#google-fonts">Google Fonts</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+    <p>Automatically self-host any Google Font. Fonts are included in the deployment and served from the same domain as your deployment. <strong>No requests are sent to Google by the browser.</strong></p>
+    <p>Import the font you would like to use from <code class="inline">@next/font/google</code> as a function. We recommend using <a href="https://fonts.google.com/variablefonts" class="absolute" target="_blank" rel="noopener noreferrer"><strong>variable fonts</strong></a> for the best performance and flexibility.</p>
+    <p>To use the font in all your pages, add it to <a href="/docs/advanced-features/custom-app" class="relative"><code class="inline">_app.js</code> file</a> under <code class="inline">/pages</code> as shown below:</p>
+    <pre class="language-js"><code class="language-js"><span class="token comment">// pages/_app.js</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Inter</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'@next/font/google'</span>
+
+<span class="token comment">// If loading a variable font, you don't need to specify the font weight</span>
+<span class="token keyword">const</span> inter <span class="token operator">=</span> <span class="token function"><span class="token maybe-class-name">Inter</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">MyApp</span></span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> <span class="token maybe-class-name">Component</span><span class="token punctuation">,</span> pageProps <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>main className<span class="token operator">=</span><span class="token punctuation">{</span>inter<span class="token punctuation">.</span><span class="token property-access">className</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token maybe-class-name">Component</span> <span class="token punctuation">{</span><span class="token spread operator">...</span>pageProps<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <p>If you can't use a variable font, you will <strong>need to specify a weight</strong>:</p>
+    <pre class="language-js"><code class="language-js"><span class="token comment">// pages/_app.js</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Roboto</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'@next/font/google'</span>
+
+<span class="token keyword">const</span> roboto <span class="token operator">=</span> <span class="token function"><span class="token maybe-class-name">Roboto</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">weight</span><span class="token operator">:</span> <span class="token string">'400'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">MyApp</span></span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> <span class="token maybe-class-name">Component</span><span class="token punctuation">,</span> pageProps <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>main className<span class="token operator">=</span><span class="token punctuation">{</span>roboto<span class="token punctuation">.</span><span class="token property-access">className</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token maybe-class-name">Component</span> <span class="token punctuation">{</span><span class="token spread operator">...</span>pageProps<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <h4 class="heading"><span id="apply-the-font-in-head"></span><a href="#apply-the-font-in-head">Apply the font in <code class="inline">&lt;head&gt;</code></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+    <p>You can also use the font without a wrapper and <code class="inline">className</code> by injecting it inside the <code class="inline">&lt;head&gt;</code> as follows:</p>
+    <pre class="language-js"><code class="language-js"><span class="token comment">// pages/_app.js</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Inter</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'@next/font/google'</span>
+
+<span class="token keyword">const</span> inter <span class="token operator">=</span> <span class="token function"><span class="token maybe-class-name">Inter</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">MyApp</span></span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> <span class="token maybe-class-name">Component</span><span class="token punctuation">,</span> pageProps <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>style jsx global<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+        html {
+          font-family: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>inter<span class="token punctuation">.</span><span class="token property-access">style</span><span class="token punctuation">.</span><span class="token property-access">fontFamily</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+        }
+      </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token maybe-class-name">Component</span> <span class="token punctuation">{</span><span class="token spread operator">...</span>pageProps<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <h4 class="heading"><span id="single-page-usage"></span><a href="#single-page-usage">Single page usage</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+    <p>To use the font on a single page, add it to the specific page as shown below:</p>
+    <pre class="language-js"><code class="language-js"><span class="token comment">// pages/index.js</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Inter</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'@next/font/google'</span>
+
+<span class="token keyword">const</span> inter <span class="token operator">=</span> <span class="token function"><span class="token maybe-class-name">Inter</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">Home</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token punctuation">{</span>inter<span class="token punctuation">.</span><span class="token property-access">className</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token maybe-class-name">Hello</span> <span class="token maybe-class-name">World</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <h4 class="heading"><span id="specifying-a-subset"></span><a href="#specifying-a-subset">Specifying a subset</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+    <p>Google Fonts are automatically <a href="https://fonts.google.com/knowledge/glossary/subsetting" class="absolute" target="_blank" rel="noopener noreferrer">subset</a>. This reduces the size of the font file and improves performance. You'll need to define which of these subsets you want to preload. Failing to specify any subsets while <a href="/docs/api-reference/next/font#preload" class="relative"><code class="inline">preload</code></a> is true will result in a warning.</p>
+    <p>This can be done in 2 ways:</p>
+    <ul>
+        <li>
+            <p>On a font per font basis by adding it to the function call</p>
+            <pre class="language-js"><code class="language-js"><span class="token comment">// pages/_app.js</span>
+<span class="token keyword">const</span> inter <span class="token operator">=</span> <span class="token function"><span class="token maybe-class-name">Inter</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">subsets</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'latin'</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+        </li>
+        <li>
+            <p>Globally for all your fonts in your <code class="inline">next.config.js</code></p>
+            <pre class="language-js"><code class="language-js"><span class="token comment">// next.config.js</span>
+module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">experimental</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">fontLoaders</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span> <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'@next/font/google'</span><span class="token punctuation">,</span> <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">subsets</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'latin'</span><span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+            <ul>
+                <li>If both are configured, the subset in the function call is used.</li>
+            </ul>
+        </li>
+    </ul>
+    <p>View the <a href="/docs/api-reference/next/font#nextfontgoogle" class="relative">Font API Reference</a> for more information.</p>
+    <h3 class="heading"><span id="local-fonts"></span><a href="#local-fonts">Local Fonts</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+    <p>Import <code class="inline">@next/font/local</code> and specify the <code class="inline">src</code> of your local font file. We recommend using <a href="https://fonts.google.com/variablefonts" class="absolute" target="_blank" rel="noopener noreferrer"><strong>variable fonts</strong></a> for the best performance and flexibility.</p>
+    <pre class="language-js"><code class="language-js"><span class="token comment">// pages/_app.js</span>
+<span class="token keyword module">import</span> <span class="token imports">localFont</span> <span class="token keyword module">from</span> <span class="token string">'@next/font/local'</span>
+
+<span class="token comment">// Font files can be colocated inside of `pages`</span>
+<span class="token keyword">const</span> myFont <span class="token operator">=</span> <span class="token function">localFont</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">src</span><span class="token operator">:</span> <span class="token string">'./my-font.woff2'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">MyApp</span></span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> <span class="token maybe-class-name">Component</span><span class="token punctuation">,</span> pageProps <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>main className<span class="token operator">=</span><span class="token punctuation">{</span>myFont<span class="token punctuation">.</span><span class="token property-access">className</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token maybe-class-name">Component</span> <span class="token punctuation">{</span><span class="token spread operator">...</span>pageProps<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <p>View the <a href="/docs/api-reference/next/font#nextfontlocal" class="relative">Font API Reference</a> for more information.</p>
+    <h2 class="heading"><span id="preloading"></span><a href="#preloading">Preloading</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+    <p>When a font function is called on a page of your site, it is not globally available and preloaded on all routes. Rather, the font is only preloaded on the related route/s based on the type of file where it is used:</p>
+    <ul>
+        <li>if it's a <a href="/docs/basic-features/pages" class="relative">unique page</a>, it is preloaded on the unique route for that page</li>
+        <li>if it's in the <a href="/docs/advanced-features/custom-app" class="relative">custom App</a>, it is preloaded on all the routes of the site under <code class="inline">/pages</code></li>
+    </ul>
+    <h2 class="heading"><span id="reusing-fonts"></span><a href="#reusing-fonts">Reusing fonts</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+    <p>Every time you call the <code class="inline">localFont</code> or Google font function, that font is hosted as one instance in your application. Therefore, if you load the same font function in multiple files, multiple instances of the same font are hosted. In this situation, it is recommended to do the following:</p>
+    <ul>
+        <li>Call the font loader function in one shared file</li>
+        <li>Export it as a constant</li>
+        <li>Import the constant in each file where you would like to use this font</li>
+    </ul>

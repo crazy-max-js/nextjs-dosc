@@ -1,24 +1,24 @@
-# AMP Support
+# AMP支持
 
 :::details 示例
 - [AMP](https://github.com/vercel/next.js/tree/canary/examples/amp)
 :::
 
-With Next.js you can turn any React page into an AMP page, with minimal config, and without leaving React.
+使用Next.js，你可以将任何React页面变成AMP页面，只需要最少的配置，并且不需要离开React。
 
-You can read more about AMP in the official[amp.dev](https://amp.dev/)site.
+你可以在官方网站[amp.dev](https://amp.dev/)上阅读更多关于AMP的信息。
 
-## Enabling AMP
+## 启用AMP
 
-To enable AMP support for a page, and to learn more about the different AMP configs, read the[API documentation for`next/amp`](/docs/guide/api-reference/next/amp).
+要为页面启用AMP支持，并了解更多关于不同AMP配置的信息，请阅读[API documentation for`next/amp`](/docs/api-reference/next/amp).
 
-## Caveats
+## 警告
 
-- Only CSS-in-JS is supported.[CSS Modules](/docs/guide/basic-features/built-in-css-support)aren't supported by AMP pages at the moment. You can[contribute CSS Modules support to Next.js](https://github.com/vercel/next.js/issues/10549).
+- 只支持CSS-in-JS。目前AMP页面不支持[CSS模块](/docs/basic-features/built-in-css-support)你可以[将CSS模块支持贡献给Next.js](https://github.com/vercel/next.js/issues/10549).
 
-## Related
+## 联系
 
-For more information on what to do next, we recommend the following sections:
+关于下一步的更多信息，我们推荐以下部分:
 
 
 

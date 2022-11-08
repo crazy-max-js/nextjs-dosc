@@ -1,4 +1,4 @@
-# 打字文件
+# TypeScript
 
 AMP目前没有TypeScript的内置类型，但它在他们的路线图中([#13791](https://github.com/ampproject/amphtml/issues/13791)).
 

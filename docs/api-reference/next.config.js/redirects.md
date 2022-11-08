@@ -37,7 +37,7 @@ module.exports = {
 
 Redirects are checked before the filesystem which includes pages and`/public`files.
 
-Redirects are not applied to client-side routing (`Link`,`router.push`), unless[Middleware](/docs/advanced-features/middleware)is present and matches the path.
+Redirects are not applied to client-side routing (`Link`,`router.push`), unless[Middleware](/docs/guide/advanced-features/middleware)is present and matches the path.
 
 When a redirect is applied, any query values provided in the request will be passed through to the redirect destination. For example, see the following redirect configuration:
 
@@ -209,7 +209,7 @@ module.exports = {
 
 ### Redirects with basePath support
 
-When leveraging[`basePath`support](/docs/api-reference/next.config.js/basepath)with redirects each`source`and`destination`is automatically prefixed with the`basePath`unless you add`basePath: false`to the redirect:
+When leveraging[`basePath`support](/docs/guide/api-reference/next.config.js/basepath)with redirects each`source`and`destination`is automatically prefixed with the`basePath`unless you add`basePath: false`to the redirect:
 
 ```js
 module.exports = {
@@ -237,7 +237,7 @@ module.exports = {
 
 ### Redirects with i18n support
 
-When leveraging[`i18n`support](/docs/advanced-features/i18n-routing)with redirects each`source`and`destination`is automatically prefixed to handle the configured`locales`unless you add`locale: false`to the redirect. If`locale: false`is used you must prefix the`source`and`destination`with a locale for it to be matched correctly.
+When leveraging[`i18n`support](/docs/guide/advanced-features/i18n-routing)with redirects each`source`and`destination`is automatically prefixed to handle the configured`locales`unless you add`locale: false`to the redirect. If`locale: false`is used you must prefix the`source`and`destination`with a locale for it to be matched correctly.
 
 ```js
 module.exports = {
@@ -291,4 +291,4 @@ In some rare cases, you might need to assign a custom status code for older HTTP
 
 ## Other Redirects
 
-- Inside[API Routes](/docs/api-routes/response-helpers), you can use`res.redirect()`.- Inside[`getStaticProps`](/docs/api-reference/data-fetching/get-static-props)and[`getServerSideProps`](/docs/api-reference/data-fetching/get-server-side-props), you can redirect specific pages at request-time.
+- Inside[API Routes](/docs/guide/api-routes/response-helpers), you can use`res.redirect()`.- Inside[`getStaticProps`](/docs/guide/api-reference/data-fetching/get-static-props)and[`getServerSideProps`](/docs/guide/api-reference/data-fetching/get-server-side-props), you can redirect specific pages at request-time.

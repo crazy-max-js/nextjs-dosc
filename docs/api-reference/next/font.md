@@ -4,13 +4,13 @@
 Version History
 :::
 
-This API reference will help you understand how to use[`@next/font/google`](#nextfontgoogle)and[`@next/font/local`](#nextfontlocal). For features and usage, please see the[Optimizing Fonts](/docs/basic-features/font-optimization)page.
+This API reference will help you understand how to use[`@next/font/google`](#nextfontgoogle)and[`@next/font/local`](#nextfontlocal). For features and usage, please see the[Optimizing Fonts](/docs/guide/basic-features/font-optimization)page.
 
 ## @next/font/google
 
 ### Font function arguments
 
-For usage, review[Google Fonts](/docs/basic-features/font-optimization#google-fonts).
+For usage, review[Google Fonts](/docs/guide/basic-features/font-optimization#google-fonts).
 
 
 
@@ -28,7 +28,7 @@ The font[`style`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style)wi
 
 ### subsets
 
-The font[`subsets`](https://fonts.google.com/knowledge/glossary/subsetting)defined by an Array of string values with the names of each subset you would like to be[preloaded](/docs/basic-features/font-optimization#specifying-a-subset). Fonts specified via`subsets`will have a link preload tag injected into the head when the[`preload`](#preload)option is true, which is the default.
+The font[`subsets`](https://fonts.google.com/knowledge/glossary/subsetting)defined by an Array of string values with the names of each subset you would like to be[preloaded](/docs/guide/basic-features/font-optimization#specifying-a-subset). Fonts specified via`subsets`will have a link preload tag injected into the head when the[`preload`](#preload)option is true, which is the default.
 
 - Optional
 
@@ -46,7 +46,7 @@ The font[`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/
 
 ### preload
 
-A boolean value that specifies whether the font should be[preloaded](/docs/basic-features/font-optimization#preloading)or not. The default is`true`.
+A boolean value that specifies whether the font should be[preloaded](/docs/guide/basic-features/font-optimization#preloading)or not. The default is`true`.
 
 - Optional
 
@@ -72,7 +72,7 @@ A string value to define the CSS variable name to be used if the style is applie
 
 ### Font function arguments
 
-For usage, review[Local Fonts](/docs/basic-features/font-optimization#local-fonts).
+For usage, review[Local Fonts](/docs/guide/basic-features/font-optimization#local-fonts).
 
 
 
@@ -106,7 +106,7 @@ The font[`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/
 
 ### preload
 
-A boolean value that specifies whether the font should be[preloaded](/docs/basic-features/font-optimization#preloading)or not. The default is`true`.
+A boolean value that specifies whether the font should be[preloaded](/docs/guide/basic-features/font-optimization#preloading)or not. The default is`true`.
 
 - Optional
 

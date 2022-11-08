@@ -1,6 +1,6 @@
 # Edge Runtime
 
-The Next.js Edge Runtime is based on standard Web APIs, which is used by[Middleware](/docs/middleware)and[Edge API Routes](/docs/api-routes/edge-api-routes).
+The Next.js Edge Runtime is based on standard Web APIs, which is used by[Middleware](/docs/middleware)and[Edge API Routes](/docs/guide/api-routes/edge-api-routes).
 
 ## Network APIs
 
@@ -28,7 +28,7 @@ The Next.js Edge Runtime is based on standard Web APIs, which is used by[Middlew
 
 ## Environment Variables
 
-You can use`process.env`to access[Environment Variables](/docs/basic-features/environment-variables)for both`next dev`and`next build`.
+You can use`process.env`to access[Environment Variables](/docs/guide/basic-features/environment-variables)for both`next dev`and`next build`.
 
 Running`console.log`on`process.env`**will not**show all your Environment Variables. You have to access the variables directly as shown below:
 

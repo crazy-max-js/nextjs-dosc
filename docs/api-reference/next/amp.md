@@ -4,7 +4,7 @@
 - [AMP](https://github.com/vercel/next.js/tree/canary/examples/amp)
 :::
 
-> AMP support is one of our advanced features, you can[read more about AMP here](/docs/advanced-features/amp-support/introduction).
+> AMP support is one of our advanced features, you can[read more about AMP here](/docs/guide/advanced-features/amp-support/introduction).
 
 To enable AMP, add the following config to your page:
 

@@ -4,7 +4,7 @@
 
 Before continuing to add custom webpack configuration to your application make sure Next.js doesn't already support your use-case:
 
-- [CSS imports](/docs/basic-features/built-in-css-support#adding-a-global-stylesheet)- [CSS modules](/docs/basic-features/built-in-css-support#adding-component-level-css)- [Sass/SCSS imports](/docs/basic-features/built-in-css-support#sass-support)- [Sass/SCSS modules](/docs/basic-features/built-in-css-support#sass-support)- [preact](https://github.com/vercel/next.js/tree/canary/examples/using-preact)- [Customizing babel configuration](/docs/advanced-features/customizing-babel-config)
+- [CSS imports](/docs/guide/basic-features/built-in-css-support#adding-a-global-stylesheet)- [CSS modules](/docs/guide/basic-features/built-in-css-support#adding-component-level-css)- [Sass/SCSS imports](/docs/guide/basic-features/built-in-css-support#sass-support)- [Sass/SCSS modules](/docs/guide/basic-features/built-in-css-support#sass-support)- [preact](https://github.com/vercel/next.js/tree/canary/examples/using-preact)- [Customizing babel configuration](/docs/guide/advanced-features/customizing-babel-config)
 
 Some commonly asked for features are available as plugins:
 

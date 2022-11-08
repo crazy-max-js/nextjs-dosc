@@ -1,6 +1,6 @@
 # Disabling HTTP Keep-Alive
 
-Next.js automatically polyfills[node-fetch](/docs/basic-features/supported-browsers-features#polyfills)and enables[HTTP Keep-Alive](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Keep-Alive)by default. You may want to disable HTTP Keep-Alive for certain`fetch()`calls or globally.
+Next.js automatically polyfills[node-fetch](/docs/guide/basic-features/supported-browsers-features#polyfills)and enables[HTTP Keep-Alive](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Keep-Alive)by default. You may want to disable HTTP Keep-Alive for certain`fetch()`calls or globally.
 
 For a single`fetch()`call, you can add the agent option:
 

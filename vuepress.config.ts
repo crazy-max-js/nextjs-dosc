@@ -19,9 +19,14 @@ export default defineUserConfig({
     logo: 'https://www.nextjs.cn/static/images/nextjs-logo.png',
     navbar: [
       {
-        text: "首页",
-        link: "/",
+        text: "指南",
+        link: "/guide/getting-started",
+        activeMatch:'/guide/'
       },
+      {
+        text:"API 参考",
+        link:"/api-reference/cli"
+      }
     ],
     sidebar: sidebar
   }),

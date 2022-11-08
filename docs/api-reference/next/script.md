@@ -4,7 +4,7 @@
 Version History
 :::
 
-This API reference will help you understand how to use[props](#props)available for the Script Component. For features and usage, please see the[Optimizing Scripts](/docs/basic-features/script)page.
+This API reference will help you understand how to use[props](#props)available for the Script Component. For features and usage, please see the[Optimizing Scripts](/docs/guide/basic-features/script)page.
 
 ```jsx
 import Script from 'next/script'
@@ -126,7 +126,7 @@ Examples of scripts that do not need to load immediately and can be fetched with
 
 #### worker
 
-> **Note:**The`worker`strategy is not yet stable and does not yet work with the[`app/`](/docs/routing/defining-routes)directory. Use with caution.
+> **Note:**The`worker`strategy is not yet stable and does not yet work with the[`app/`](/docs/guide/routing/defining-routes)directory. Use with caution.
 
 Scripts that use the`worker`strategy are off-loaded to a web worker in order to free up the main thread and ensure that only critical, first-party resources are processed on it. While this strategy can be used for any script, it is an advanced use case that is not guaranteed to support all third-party scripts.
 

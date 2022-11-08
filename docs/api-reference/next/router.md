@@ -1,6 +1,6 @@
 # next/router
 
-> Before moving forward, we recommend you to read[Routing Introduction](/docs/routing/introduction)first.
+> Before moving forward, we recommend you to read[Routing Introduction](/docs/guide/routing/introduction)first.
 
 ## useRouter
 
@@ -38,9 +38,9 @@ export default ActiveLink
 
 The following is the definition of the`router`object returned by both[`useRouter`](#userouter)and[`withRouter`](#withrouter):
 
-- `pathname`:`String`- The path for current route file that comes after`/pages`. Therefore,`basePath`,`locale`and trailing slash (`trailingSlash: true`) are not included.- `query`:`Object`- The query string parsed to an object, including[dynamic route](/docs/routing/dynamic-routes)parameters. It will be an empty object during prerendering if the page doesn't use[Server-side Rendering](/docs/basic-features/data-fetching/get-server-side-props). Defaults to`{}`- `asPath`:`String`- The path as shown in the browser including the search params and respecting the`trailingSlash`configuration.`basePath`and`locale`are not included.- `isFallback`:`boolean`- Whether the current page is in[fallback mode](/docs/api-reference/data-fetching/get-static-paths#fallback-pages).- `basePath`:`String`- The active[basePath](/docs/api-reference/next.config.js/basepath)(if enabled).- `locale`:`String`- The active locale (if enabled).- `locales`:`String[]`- All supported locales (if enabled).- `defaultLocale`:`String`- The current default locale (if enabled).- `domainLocales`:`Array<{domain, defaultLocale, locales}>`- Any configured domain locales.- `isReady`:`boolean`- Whether the router fields are updated client-side and ready for use. Should only be used inside of`useEffect`methods and not for conditionally rendering on the server. See related docs for use case with[automatically statically optimized pages](/docs/advanced-features/automatic-static-optimization)- `isPreview`:`boolean`- Whether the application is currently in[preview mode](/docs/advanced-features/preview-mode).
+- `pathname`:`String`- The path for current route file that comes after`/pages`. Therefore,`basePath`,`locale`and trailing slash (`trailingSlash: true`) are not included.- `query`:`Object`- The query string parsed to an object, including[dynamic route](/docs/guide/routing/dynamic-routes)parameters. It will be an empty object during prerendering if the page doesn't use[Server-side Rendering](/docs/guide/basic-features/data-fetching/get-server-side-props). Defaults to`{}`- `asPath`:`String`- The path as shown in the browser including the search params and respecting the`trailingSlash`configuration.`basePath`and`locale`are not included.- `isFallback`:`boolean`- Whether the current page is in[fallback mode](/docs/guide/api-reference/data-fetching/get-static-paths#fallback-pages).- `basePath`:`String`- The active[basePath](/docs/guide/api-reference/next.config.js/basepath)(if enabled).- `locale`:`String`- The active locale (if enabled).- `locales`:`String[]`- All supported locales (if enabled).- `defaultLocale`:`String`- The current default locale (if enabled).- `domainLocales`:`Array<{domain, defaultLocale, locales}>`- Any configured domain locales.- `isReady`:`boolean`- Whether the router fields are updated client-side and ready for use. Should only be used inside of`useEffect`methods and not for conditionally rendering on the server. See related docs for use case with[automatically statically optimized pages](/docs/guide/advanced-features/automatic-static-optimization)- `isPreview`:`boolean`- Whether the application is currently in[preview mode](/docs/guide/advanced-features/preview-mode).
 
-> Using the`asPath`field may lead to a mismatch between client and server if the page is rendered using server-side rendering or[automatic static optimization](/docs/advanced-features/automatic-static-optimization). Avoid using`asPath`until the`isReady`field is`true`.
+> Using the`asPath`field may lead to a mismatch between client and server if the page is rendered using server-side rendering or[automatic static optimization](/docs/guide/advanced-features/automatic-static-optimization). Avoid using`asPath`until the`isReady`field is`true`.
 
 The following methods are included inside`router`:
 
@@ -50,14 +50,14 @@ The following methods are included inside`router`:
 - [Using Router](https://github.com/vercel/next.js/tree/canary/examples/using-router)
 :::
 
-Handles client-side transitions, this method is useful for cases where[`next/link`](/docs/api-reference/next/link)is not enough.
+Handles client-side transitions, this method is useful for cases where[`next/link`](/docs/guide/api-reference/next/link)is not enough.
 
 ```jsx
 router.push(url, as, options)
 
 ```
 
-- `url`:`UrlObject | String`- The URL to navigate to (see[Node.JS URL module documentation](https://nodejs.org/api/url.html#legacy-urlobject)for`UrlObject`properties).- `as`:`UrlObject | String`- Optional decorator for the path that will be shown in the browser URL bar. Before Next.js 9.5.3 this was used for dynamic routes, check our[previous docs](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes)to see how it worked. Note: when this path differs from the one provided in`href`the previous`href`/`as`behavior is used as shown in the[previous docs](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes)- `options`- Optional object with the following configuration options:- `scroll`- Optional boolean, controls scrolling to the top of the page after navigation. Defaults to`true`- [`shallow`](/docs/routing/shallow-routing): Update the path of the current page without rerunning[`getStaticProps`](/docs/basic-features/data-fetching/get-static-props),[`getServerSideProps`](/docs/basic-features/data-fetching/get-server-side-props)or[`getInitialProps`](/docs/api-reference/data-fetching/get-initial-props). Defaults to`false`- `locale`- Optional string, indicates locale of the new page
+- `url`:`UrlObject | String`- The URL to navigate to (see[Node.JS URL module documentation](https://nodejs.org/api/url.html#legacy-urlobject)for`UrlObject`properties).- `as`:`UrlObject | String`- Optional decorator for the path that will be shown in the browser URL bar. Before Next.js 9.5.3 this was used for dynamic routes, check our[previous docs](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes)to see how it worked. Note: when this path differs from the one provided in`href`the previous`href`/`as`behavior is used as shown in the[previous docs](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes)- `options`- Optional object with the following configuration options:- `scroll`- Optional boolean, controls scrolling to the top of the page after navigation. Defaults to`true`- [`shallow`](/docs/guide/routing/shallow-routing): Update the path of the current page without rerunning[`getStaticProps`](/docs/guide/basic-features/data-fetching/get-static-props),[`getServerSideProps`](/docs/guide/basic-features/data-fetching/get-server-side-props)or[`getInitialProps`](/docs/guide/api-reference/data-fetching/get-initial-props). Defaults to`false`- `locale`- Optional string, indicates locale of the new page
 
 > You don't need to use`router.push`for external URLs.[window.location](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)is better suited for those cases.
 
@@ -174,7 +174,7 @@ export default function MyApp({ Component, pageProps }) {
 
 #### With URL object
 
-You can use a URL object in the same way you can use it for[`next/link`](/docs/api-reference/next/link#with-url-object). Works for both the`url`and`as`parameters:
+You can use a URL object in the same way you can use it for[`next/link`](/docs/guide/api-reference/next/link#with-url-object). Works for both the`url`and`as`parameters:
 
 ```jsx
 import { useRouter } from 'next/router'
@@ -201,7 +201,7 @@ export default function ReadMore({ post }) {
 
 ### router.replace
 
-Similar to the`replace`prop in[`next/link`](/docs/api-reference/next/link),`router.replace`will prevent adding a new URL entry into the`history`stack.
+Similar to the`replace`prop in[`next/link`](/docs/guide/api-reference/next/link),`router.replace`will prevent adding a new URL entry into the`history`stack.
 
 ```jsx
 router.replace(url, as, options)
@@ -231,7 +231,7 @@ export default function Page() {
 
 ### router.prefetch
 
-Prefetch pages for faster client-side transitions. This method is only useful for navigations without[`next/link`](/docs/api-reference/next/link), as`next/link`takes care of prefetching pages automatically.
+Prefetch pages for faster client-side transitions. This method is only useful for navigations without[`next/link`](/docs/guide/api-reference/next/link), as`next/link`takes care of prefetching pages automatically.
 
 > This is a production only feature. Next.js doesn't prefetch pages in development.
 
@@ -284,7 +284,7 @@ export default function Login() {
 
 ### router.beforePopState
 
-In some cases (for example, if using a[Custom Server](/docs/advanced-features/custom-server)), you may wish to listen to[popstate](https://developer.mozilla.org/en-US/docs/Web/Events/popstate)and do something before the router acts on it.
+In some cases (for example, if using a[Custom Server](/docs/guide/advanced-features/custom-server)), you may wish to listen to[popstate](https://developer.mozilla.org/en-US/docs/Web/Events/popstate)and do something before the router acts on it.
 
 ```jsx
 router.beforePopState(cb)
@@ -293,7 +293,7 @@ router.beforePopState(cb)
 
 - `cb`- The function to run on incoming`popstate`events. The function receives the state of the event as an object with the following props:- `url`:`String`- the route for the new state. This is usually the name of a`page`- `as`:`String`- the url that will be shown in the browser- `options`:`Object`- Additional options sent by[router.push](#routerpush)
 
-If`cb`returns`false`, the Next.js router will not handle`popstate`, and you'll be responsible for handling it in that case. See[Disabling file-system routing](/docs/advanced-features/custom-server#disabling-file-system-routing).
+If`cb`returns`false`, the Next.js router will not handle`popstate`, and you'll be responsible for handling it in that case. See[Disabling file-system routing](/docs/guide/advanced-features/custom-server#disabling-file-system-routing).
 
 #### Usage
 
@@ -376,7 +376,7 @@ You can listen to different events happening inside the Next.js Router. Here's a
 
 - `routeChangeStart(url, { shallow })`- Fires when a route starts to change- `routeChangeComplete(url, { shallow })`- Fires when a route changed completely- `routeChangeError(err, url, { shallow })`- Fires when there's an error when changing routes, or a route load is cancelled- `err.cancelled`- Indicates if the navigation was cancelled- `beforeHistoryChange(url, { shallow })`- Fires before changing the browser's history- `hashChangeStart(url, { shallow })`- Fires when the hash will change but not the page- `hashChangeComplete(url, { shallow })`- Fires when the hash has changed but not the page
 
-> **Note:**Here`url`is the URL shown in the browser, including the[`basePath`](/docs/api-reference/next.config.js/basepath).
+> **Note:**Here`url`is the URL shown in the browser, including the[`basePath`](/docs/guide/api-reference/next.config.js/basepath).
 
 #### Usage
 
@@ -412,7 +412,7 @@ export default function MyApp({ Component, pageProps }) {
 
 ```
 
-> We use a[Custom App](/docs/advanced-features/custom-app)(`pages/_app.js`) for this example to subscribe to the event because it's not unmounted on page navigations, but you can subscribe to router events on any component in your application.
+> We use a[Custom App](/docs/guide/advanced-features/custom-app)(`pages/_app.js`) for this example to subscribe to the event because it's not unmounted on page navigations, but you can subscribe to router events on any component in your application.
 
 Router events should be registered when a component mounts ([useEffect](https://reactjs.org/docs/hooks-effect.html)or[componentDidMount](https://reactjs.org/docs/react-component.html#componentdidmount)/[componentWillUnmount](https://reactjs.org/docs/react-component.html#componentwillunmount)) or imperatively when an event happens.
 

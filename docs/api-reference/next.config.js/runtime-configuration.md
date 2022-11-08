@@ -1,6 +1,6 @@
 # Runtime Configuration
 
-> Generally you'll want to use[build-time environment variables](/docs/basic-features/environment-variables)to provide your configuration. The reason for this is that runtime configuration adds rendering / initialization overhead and is incompatible with[Automatic Static Optimization](/docs/advanced-features/automatic-static-optimization).
+> Generally you'll want to use[build-time environment variables](/docs/guide/basic-features/environment-variables)to provide your configuration. The reason for this is that runtime configuration adds rendering / initialization overhead and is incompatible with[Automatic Static Optimization](/docs/guide/advanced-features/automatic-static-optimization).
 
 To add runtime configuration to your app open`next.config.js`and add the`publicRuntimeConfig`and`serverRuntimeConfig`configs:
 
@@ -23,7 +23,7 @@ Place any server-only runtime config under`serverRuntimeConfig`.
 
 Anything accessible to both client and server-side code should be under`publicRuntimeConfig`.
 
-> A page that relies on`publicRuntimeConfig`**must**use`getInitialProps`or`getServerSideProps`or your application must have a[Custom App](/docs/advanced-features/custom-app)with`getInitialProps`to opt-out of[Automatic Static Optimization](/docs/advanced-features/automatic-static-optimization). Runtime configuration won't be available to any page (or component in a page) without being server-side rendered.
+> A page that relies on`publicRuntimeConfig`**must**use`getInitialProps`or`getServerSideProps`or your application must have a[Custom App](/docs/guide/advanced-features/custom-app)with`getInitialProps`to opt-out of[Automatic Static Optimization](/docs/guide/advanced-features/automatic-static-optimization). Runtime configuration won't be available to any page (or component in a page) without being server-side rendered.
 
 To get access to the runtime configs in your app use`next/config`, like so:
 

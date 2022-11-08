@@ -56,4 +56,4 @@ In this case only the second`<meta property="og:title" />`is rendered.`meta`tags
 `title`,`meta`or any other elements (e.g.`script`) need to be contained as**direct**children of the`Head`element,
 or wrapped into maximum one level of`<React.Fragment>`or arrays—otherwise the tags won't be correctly picked up on client-side navigations.
 
-> We recommend using[next/script](/docs/basic-features/script)in your component instead of manually creating a`<script>`in`next/head`.
+> We recommend using[next/script](/docs/guide/basic-features/script)in your component instead of manually creating a`<script>`in`next/head`.

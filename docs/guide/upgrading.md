@@ -23,7 +23,7 @@ Next.js 13 introduces a new[`app`directory](https://beta.nextjs.org/docs/routing
 
 You can continue using`pages`with new features that work in both directories, such as the updated[Image component](#image-component),[Link component](#link-component),[Script component](#script-component), and[Font optimization](#font-optimization).
 
-### <Image/> Component
+### `<Image/>` Component
 
 Next.js 12 introduced many improvements to the Image Component with a temporary import:`next/future/image`. These improvements included less client-side JavaScript, easier ways to extend and style images, better accessibility, and native browser lazy loading.
 
@@ -35,7 +35,7 @@ There are two codemods to help you migrate to the new Image Component:
 
 Alternatively, you can manually update by following the[migration guide](/docs/guide/advanced-features/codemods#next-image-experimental-experimental)and also see the[legacy comparison](/docs/guide/api-reference/next/legacy/image#comparison).
 
-### <Link> Component
+### `<Link>` Component
 
 The[`<Link>`Component](/docs/guide/api-reference/next/link)no longer requires manually adding an`<a>`tag as a child. This behavior was added as an experimental option in[version 12.2](/blog/next-12-2)and is now the default. In Next.js 13,`<Link>`always renders`<a>`and allows you to forward props to the underlying tag.
 
@@ -58,7 +58,7 @@ import Link from 'next/link'
 
 To upgrade your links to Next.js 13, you can use the[`new-link`codemod](/docs/guide/advanced-features/codemods#new-link).
 
-### <Script> Component
+### `<Script>` Component
 
 The behavior of[`next/script`](/docs/guide/api-reference/next/script)has been updated to support both`pages`and`app`. If incrementally adopting`app`, read the[upgrade guide](https://beta.nextjs.org/docs/upgrade-guide).
 

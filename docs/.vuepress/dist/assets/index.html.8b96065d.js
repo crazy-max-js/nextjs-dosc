@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-8daa1a0e","path":"/","title":"页面的标题","lang":"zh-CN","frontmatter":{"lang":"zh-CN","title":"页面的标题","description":"页面的描述"},"excerpt":"","headers":[],"git":{"updatedTime":1667895889000},"filePathRelative":"README.md"}');export{e as data};

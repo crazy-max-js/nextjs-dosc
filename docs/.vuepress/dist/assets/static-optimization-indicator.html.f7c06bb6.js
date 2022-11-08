@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-4843d890","path":"/api-reference/next.config.js/static-optimization-indicator.html","title":"Static Optimization Indicator","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667891572000},"filePathRelative":"api-reference/next.config.js/static-optimization-indicator.md"}');export{t as data};

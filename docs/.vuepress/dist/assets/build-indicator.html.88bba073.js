@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-36e345e4","path":"/api-reference/next.config.js/build-indicator.html","title":"Build indicator","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667884588000},"filePathRelative":"api-reference/next.config.js/build-indicator.md"}');export{e as data};

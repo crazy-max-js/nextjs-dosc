@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-0ec45ede","path":"/guide/advanced-features/react-18/streaming.html","title":"Streaming SSR","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667891572000},"filePathRelative":"guide/advanced-features/react-18/streaming.md"}');export{e as data};

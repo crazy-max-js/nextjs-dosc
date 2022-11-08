@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-3d254550","path":"/api-reference/next.config.js/compression.html","title":"Compression","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[{"level":2,"title":"Related","slug":"related","link":"#related","children":[]}],"git":{"updatedTime":1667884588000},"filePathRelative":"api-reference/next.config.js/compression.md"}');export{e as data};

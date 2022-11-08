@@ -1,0 +1,9 @@
+import{_ as n,o as e,c as a,a as s}from"./app.1ad2624e.js";const o={},t=s(`<h1 id="ignoring-eslint" tabindex="-1"><a class="header-anchor" href="#ignoring-eslint" aria-hidden="true">#</a> Ignoring ESLint</h1><p>When ESLint is detected in your project, Next.js fails your<strong>production build</strong>(<code>next build</code>) when errors are present.</p><p>If you&#39;d like Next.js to produce production code even when your application has ESLint errors, you can disable the built-in linting step completely. This is not recommended unless you already have ESLint configured to run in a separate part of your workflow (for example, in CI or a pre-commit hook).</p><p>Open<code>next.config.js</code>and enable the<code>ignoreDuringBuilds</code>option in the<code>eslint</code>config:</p><div class="language-javascript" data-ext="js"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">eslint</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Warning: This allows production builds to successfully complete even if</span>
+    <span class="token comment">// your project has ESLint errors.</span>
+    <span class="token literal-property property">ignoreDuringBuilds</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="related" tabindex="-1"><a class="header-anchor" href="#related" aria-hidden="true">#</a> Related</h2>`,6),r=[t];function i(p,c){return e(),a("div",null,r)}const d=n(o,[["render",i],["__file","ignoring-eslint.html.vue"]]);export{d as default};

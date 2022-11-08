@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-3dbfa2b8","path":"/guide/advanced-features/amp-support/typescript.html","title":"TypeScript","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667895889000},"filePathRelative":"guide/advanced-features/amp-support/typescript.md"}');export{e as data};

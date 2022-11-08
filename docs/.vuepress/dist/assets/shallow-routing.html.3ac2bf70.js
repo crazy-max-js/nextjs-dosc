@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-5e333781","path":"/guide/routing/shallow-routing.html","title":"Shallow Routing","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[{"level":2,"title":"Caveats","slug":"caveats","link":"#caveats","children":[]}],"git":{"updatedTime":1667891572000},"filePathRelative":"guide/routing/shallow-routing.md"}');export{t as data};

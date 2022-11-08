@@ -68,7 +68,7 @@ export default Posts
 
 ```
 
-## If the child is <a> tag
+## If the child is `<a>` tag
 
 ```jsx
 import Link from 'next/link'
@@ -85,7 +85,7 @@ export default Legacy
 
 ```
 
-## If the child is a custom component that wraps an <a> tag
+## If the child is a custom component that wraps an `<a>` tag
 
 If the child of`Link`is a custom component that wraps an`<a>`tag, you must add`passHref`to`Link`. This is necessary if you’re using libraries like[styled-components](https://styled-components.com/). Without this, the`<a>`tag will not have the`href`attribute, which hurts your site's accessibility and might affect SEO. If you're using[ESLint](/docs/guide/basic-features/eslint#eslint-plugin), there is a built-in rule`next/link-passhref`to ensure correct usage of`passHref`.
 

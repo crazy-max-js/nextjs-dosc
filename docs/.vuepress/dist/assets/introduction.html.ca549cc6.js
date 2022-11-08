@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-27ea277a","path":"/api-reference/next.config.js/introduction.html","title":"next.config.js","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667884588000},"filePathRelative":"api-reference/next.config.js/introduction.md"}');export{e as data};

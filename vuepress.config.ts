@@ -1,7 +1,8 @@
-import { defineUserConfig, defaultTheme } from "vuepress";
-import { searchPlugin } from '@vuepress/plugin-search'
-import { registerComponentsPlugin } from "@vuepress/plugin-register-components";
-import { getDirname, path } from '@vuepress/utils'
+import {defineUserConfig, defaultTheme} from "vuepress";
+import {searchPlugin} from '@vuepress/plugin-search'
+import {registerComponentsPlugin} from "@vuepress/plugin-register-components";
+import {getDirname, path} from '@vuepress/utils'
+import {sidebar} from "./router";
 
 const __dirname = getDirname(import.meta.url)
 
@@ -22,95 +23,7 @@ export default defineUserConfig({
         link: "/",
       },
     ],
-    sidebar: [
-      // SidebarItem
-      {
-        text: '快速入门',
-        link: '/getting-started',
-      },
-      {
-        text: '基本功能',
-        children:[
-          {
-            text:'页面',
-            link:'/basic-features/pages'
-          },
-          {
-            text:'数据获取',
-            children:[
-              {
-                text:'概述',
-                link:'/basic-features/data-fetching/overview'
-              },
-              {
-                text:'getServerSideProps',
-                link:'/basic-features/data-fetching/get-server-side-props'
-              },
-              {
-                text:'getStaticPaths',
-                link:'/basic-features/data-fetching/get-static-paths'
-              },
-              {
-                text:'getStaticProps',
-                link:'/basic-features/data-fetching/get-static-props'
-              },
-              {
-                text:'ISR',
-                link:'/basic-features/data-fetching/incremental-static-regeneration'
-              },
-              {
-                text:'客户端',
-                link:'/basic-features/data-fetching/client-side'
-              }
-            ]
-          },
-          {
-            text:'内置 CSS 支持',
-            link:'/basic-features/built-in-css-support'
-          },
-          {
-            text:'布局',
-            link:'/basic-features/layouts'
-          },
-          {
-            text:'图像优化',
-            link:'/basic-features/image-optimization'
-          },
-          {
-            text:'字体优化',
-            link:'/basic-features/font-optimization'
-          },
-          {
-            text:'静态文件服务',
-            link:'/basic-features/static-file-serving'
-          },
-          {
-            text:'快速刷新',
-            link:'/basic-features/fast-refresh'
-          },
-          {
-            text:'ESLint',
-            link:'/basic-features/eslint'
-          },
-          {
-            text:'TypeScript',
-            link:'/basic-features/typescript'
-          },
-          {
-            text:'环境变量',
-            link:'/basic-features/environment-variables'
-          },
-          {
-            text:'支持的浏览器和功能',
-            link:'/basic-features/supported-browsers-features'
-          },
-          {
-            text:'处理脚本',
-            link:'/basic-features/script'
-          },
-        ]
-      },
-    ],
+    sidebar: sidebar
   }),
   plugins: [
     searchPlugin({

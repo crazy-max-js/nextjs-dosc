@@ -1,6 +1,4 @@
-<CustomBlock title="TIP">
-    <p>Next.js 13 最近发布，了解更多信息并查看升级指南。版本 13 还引入了 beta 功能，例如与app目录（稳定）一起工作的pages目录，以实现增量采用。您可以pages在 Next.js 13 中继续使用，但如果您想尝试新app功能，请参阅新的 beta 文档。</p>
-</CustomBlock>
+> Next.js 13 最近发布，了解更多信息并查看升级指南。版本 13 还引入了 beta 功能，例如与app目录（稳定）一起工作的pages目录，以实现增量采用。您可以pages在 Next.js 13 中继续使用，但如果您想尝试新app功能，请参阅新的 beta 文档。
 
 # 快速入门
 

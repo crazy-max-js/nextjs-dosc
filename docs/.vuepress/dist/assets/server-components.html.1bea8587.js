@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-182891c0","path":"/guide/advanced-features/react-18/server-components.html","title":"React Server Components","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667891572000},"filePathRelative":"guide/advanced-features/react-18/server-components.md"}');export{e as data};

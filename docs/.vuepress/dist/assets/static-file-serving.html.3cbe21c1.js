@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-d4aa66b4","path":"/guide/basic-features/static-file-serving.html","title":"Static File Serving","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667891572000},"filePathRelative":"guide/basic-features/static-file-serving.md"}');export{e as data};

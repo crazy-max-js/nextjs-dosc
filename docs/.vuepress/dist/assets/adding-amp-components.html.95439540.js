@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-16b888ec","path":"/guide/advanced-features/amp-support/adding-amp-components.html","title":"添加AMP组件","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667891743000},"filePathRelative":"guide/advanced-features/amp-support/adding-amp-components.md"}');export{e as data};

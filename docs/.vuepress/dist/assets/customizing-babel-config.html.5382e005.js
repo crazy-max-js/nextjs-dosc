@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-a592e718","path":"/guide/advanced-features/customizing-babel-config.html","title":"Customizing Babel Config","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667891572000},"filePathRelative":"guide/advanced-features/customizing-babel-config.md"}');export{e as data};

@@ -1,8 +1,0 @@
-import{_ as n,o as e,c as a,a as s}from"./app.1ad2624e.js";const t={},o=s(`<h1 id="configuring-the-build-id" tabindex="-1"><a class="header-anchor" href="#configuring-the-build-id" aria-hidden="true">#</a> Configuring the Build ID</h1><p>Next.js uses a constant id generated at build time to identify which version of your application is being served. This can cause problems in multi-server deployments when<code>next build</code>is run on every server. In order to keep a consistent build id between builds you can provide your own build id.</p><p>Open<code>next.config.js</code>and add the<code>generateBuildId</code>function:</p><div class="language-javascript" data-ext="js"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token function-variable function">generateBuildId</span><span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-    <span class="token comment">// You can, for example, get the latest git commit hash here</span>
-    <span class="token keyword">return</span> <span class="token string">&#39;my-build-id&#39;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-
-</code></pre></div><h2 id="related" tabindex="-1"><a class="header-anchor" href="#related" aria-hidden="true">#</a> Related</h2>`,5),i=[o];function c(d,r){return e(),a("div",null,i)}const u=n(t,[["render",c],["__file","configuring-the-build-id.html.vue"]]);export{u as default};

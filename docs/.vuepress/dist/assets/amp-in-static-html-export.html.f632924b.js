@@ -1,1 +1,0 @@
-const t=JSON.parse('{"key":"v-176fe53f","path":"/guide/advanced-features/amp-support/amp-in-static-html-export.html","title":"AMP在静态HTML导出","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667891743000},"filePathRelative":"guide/advanced-features/amp-support/amp-in-static-html-export.md"}');export{t as data};

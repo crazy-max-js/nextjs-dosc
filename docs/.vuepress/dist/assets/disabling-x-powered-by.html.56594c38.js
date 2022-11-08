@@ -1,5 +1,0 @@
-import{_ as e,o as a,c as n,a as s}from"./app.1ad2624e.js";const o={},t=s(`<h1 id="disabling-x-powered-by" tabindex="-1"><a class="header-anchor" href="#disabling-x-powered-by" aria-hidden="true">#</a> Disabling x-powered-by</h1><p>By default Next.js will add the<code>x-powered-by</code>header. To opt-out of it, open<code>next.config.js</code>and disable the<code>poweredByHeader</code>config:</p><div class="language-javascript" data-ext="js"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">poweredByHeader</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-
-</code></pre></div><h2 id="related" tabindex="-1"><a class="header-anchor" href="#related" aria-hidden="true">#</a> Related</h2>`,4),d=[t];function r(c,p){return a(),n("div",null,d)}const l=e(o,[["render",r],["__file","disabling-x-powered-by.html.vue"]]);export{l as default};

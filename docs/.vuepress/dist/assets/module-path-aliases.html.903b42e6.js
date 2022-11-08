@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-0cbd3e96","path":"/guide/advanced-features/module-path-aliases.html","title":"Absolute Imports and Module path aliases","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1667891572000},"filePathRelative":"guide/advanced-features/module-path-aliases.md"}');export{e as data};

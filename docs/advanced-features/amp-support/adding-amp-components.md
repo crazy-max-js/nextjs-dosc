@@ -1,7 +1,6 @@
-# Adding AMP Components
+# 添加AMP组件
 
-The AMP community provides[many components](https://amp.dev/documentation/components/)to make AMP pages more interactive. Next.js will automatically import all components used on a page and there is no need to manually import AMP component scripts:
-
+AMP社区提供了[多种组件](https://amp.dev/documentation/components/)使AMP页面更具互动性。Next.js会自动导入页面上使用的所有组件，不需要手动导入AMP组件脚本:
 ```jsx
 export const config = { amp: true }
 
@@ -27,9 +26,9 @@ export default MyAmpPage
 
 ```
 
-The above example uses the[`amp-timeago`](https://amp.dev/documentation/components/amp-timeago/?format=websites)component.
+上面的例子使用了[`amp-timeago`](https://amp.dev/documentation/components/amp-timeago/?format=websites)组件。
 
-By default, the latest version of a component is always imported. If you want to customize the version, you can use`next/head`, as in the following example:
+默认情况下，总是导入组件的最新版本。如果你想自定义版本，你可以使用`next/head`，如下例所示:
 
 ```jsx
 import Head from 'next/head'

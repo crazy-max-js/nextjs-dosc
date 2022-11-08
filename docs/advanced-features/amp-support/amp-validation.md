@@ -1,12 +1,12 @@
-# AMP Validation
+# AMP验证
 
-AMP pages are automatically validated with[amphtml-validator](https://www.npmjs.com/package/amphtml-validator)during development. Errors and warnings will appear in the terminal where you started Next.js.
+AMP页面在开发过程中使用[amphtml-validator](https://www.npmjs.com/package/amphtml-validator)自动验证。错误和警告将出现在您启动Next.js的终端中。
 
-Pages are also validated during[Static HTML export](/docs/advanced-features/static-html-export)and any warnings / errors will be printed to the terminal. Any AMP errors will cause the export to exit with status code`1`because the export is not valid AMP.
+在[静态HTML导出](/docs/advanced-features/static-html-export)过程中也会对页面进行验证，任何警告/错误都将打印到终端。任何AMP错误都将导致导出退出，状态码为`1`因为导出不是有效的AMP。
 
-### Custom Validators
+### 定制验证器
 
-You can set up custom AMP validator in`next.config.js`as shown below:
+你可以设置自定义AMP验证器`next.config.js`如下所示:
 
 ```jsx
 module.exports = {
@@ -17,9 +17,9 @@ module.exports = {
 
 ```
 
-### Skip AMP Validation
+### 跳过AMP验证
 
-To turn off AMP validation add the following code to`next.config.js`
+要关闭AMP验证，添加以下代码到`next.config.js`
 
 ```jsx
 experimental: {

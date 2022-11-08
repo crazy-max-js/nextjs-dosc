@@ -1,29 +1,28 @@
-# AMP in Static HTML export
+# AMP在静态HTML导出
 
-When using`next export`to do[Static HTML export](/docs/advanced-features/static-html-export)statically prerender pages, Next.js will detect if the page supports AMP and change the exporting behavior based on that.
+当使用`next export`做[静态HTML导出](/docs/advanced-features/static-html-export)静态预渲染页面时， Next.js将检测页面是否支持AMP并基于此更改导出行为。
+例如， 混合AMP页面将`pages/about.js`输出:
 
-For example, the hybrid AMP page`pages/about.js`would output:
+- `out/about.html`- 带有客户端React运行时的HTML页面- `out/about.amp.html`- AMP页面
 
-- `out/about.html`- HTML page with client-side React runtime- `out/about.amp.html`- AMP page
+如果`pages/about.js`是一个只有amp的页面，那么它将输出:
 
-And if`pages/about.js`is an AMP-only page, then it would output:
+- `out/about.html`-AMP页面优化
 
-- `out/about.html`- Optimized AMP page
-
-Next.js will automatically insert a link to the AMP version of your page in the HTML version, so you don't have to, like so:
+Next.js 会自动在HTML版本中插入一个链接到AMP版本的页面，所以你不需要，像这样:
 
 ```jsx
 <link rel="amphtml" href="/about.amp.html" />
 
 ```
 
-And the AMP version of your page will include a link to the HTML page:
+AMP版本的页面将包含到HTML页面的链接:
 
 ```jsx
 <link rel="canonical" href="/about" />
 
 ```
 
-When[`trailingSlash`](/docs/api-reference/next.config.js/trailing-slash)is enabled the exported pages for`pages/about.js`would be:
+当[`trailingSlash`](/docs/api-reference/next.config.js/trailing-slash)被启用时，为`pages/about.js`导出的页面将是:
 
-- `out/about/index.html`- HTML page- `out/about.amp/index.html`- AMP page
+- `out/about/index.html`- HTML页面- `out/about.amp/index.html`-AMP页面

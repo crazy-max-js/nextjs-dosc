@@ -10,7 +10,7 @@ const __dirname = getDirname(import.meta.url)
 
 export default defineUserConfig({
   lang: "zh-CN",
-  title: "",
+  title: "Next.js中文文档",
   description: "阅读官方文档快速上手 Next.js，并了解所有功能的详细信息！",
   markdown: {
     code: {
@@ -18,7 +18,6 @@ export default defineUserConfig({
     }
   },
   theme: defaultTheme({
-    logo: 'https://www.nextjs.cn/static/images/nextjs-logo.png',
     navbar: [
       {
         text: "指南",

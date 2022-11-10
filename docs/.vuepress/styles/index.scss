@@ -124,3 +124,10 @@ blockquote {
   background-color: var(--c-border);
   border-radius: 99px;
 }
+
+.home .hero .description{
+  max-width: none;
+}
+.home .hero{
+  padding-top: 50px;
+}

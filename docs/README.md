@@ -1,7 +1,7 @@
 ---
 lang: zh-CN
-title: 页面的标题
-description: 页面的描述
+title: Next.js - 用于生产的React框架
+description: 可扩展的生产级React应用程序。世界领先的公司使用Next.js来构建静态和动态网站和web应用程序。
 comment: false
 home: true
 heroText: 用于生产的React框架

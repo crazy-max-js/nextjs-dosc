@@ -12,8 +12,6 @@ This API reference will help you understand how to use[`@next/font/google`](#nex
 
 For usage, review[Google Fonts](/docs/guide/basic-features/font-optimization#google-fonts).
 
-
-
 ### weight
 
 The font[`weight`](https://fonts.google.com/knowledge/glossary/weight)represented as a string with possible values of the weights available for the specific font. For example, for the font[`Inter`](https://fonts.google.com/specimen/Inter?query=inter), the possible values are`'100'`,`'200'`,`'300'`,`'400'`,`'500'`,`'600'`,`'700'`,`'800'`,`'900'`or`'variable'`(`'variable'`is the default in this case).

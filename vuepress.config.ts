@@ -8,6 +8,7 @@ import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
 const __dirname = getDirname(import.meta.url)
 
+
 export default defineUserConfig({
   lang: "zh-CN",
   title: "Next.js中文文档",

@@ -20,9 +20,9 @@ jobs:
 
       # 部署到 GitHub Pages
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: 20854390/nextjs-docs-source@master
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 也就是我们刚才生成的 secret
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           TARGET_REPO: 20854390/nextjs-docs
           TARGET_BRANCH: master
           BUILD_SCRIPT: yarn && yarn docs:build

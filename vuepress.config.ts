@@ -57,10 +57,10 @@ export default defineUserConfig({
     }),
     commentPlugin({
       provider: 'Giscus',
-      repo: '20854390/docs',
-      repoId: 'R_kgDOIXtFgQ',
-      category: 'General',
-      categoryId: 'DIC_kwDOIXtFgc4CSbrM'
+      repo: 'crazy-max-js/nextjs-dosc-comment',
+      repoId: 'R_kgDOIaiZcw',
+      category: 'Announcements',
+      categoryId: 'DIC_kwDOIaiZc84CSfkM'
     }),
     googleAnalyticsPlugin({
       id: 'G-4EC0D6T29F'

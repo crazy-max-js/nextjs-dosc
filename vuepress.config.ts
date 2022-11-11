@@ -13,6 +13,13 @@ export default defineUserConfig({
   lang: "zh-CN",
   title: "Next.js中文文档",
   description: "阅读官方文档快速上手 Next.js，并了解所有功能的详细信息！",
+  locales: {
+    // 键名是该语言所属的子路径
+    // 作为特例，默认语言可以使用 '/' 作为其路径。
+    '/': {
+      lang: 'zh-CN',
+    },
+  },
   markdown: {
     code: {
       lineNumbers: false
@@ -23,19 +30,19 @@ export default defineUserConfig({
       {
         text: "指南",
         link: "/guide/getting-started",
-        activeMatch:'/guide/'
+        activeMatch: '/guide/'
       },
       {
-        text:"API 参考",
-        link:"/api-reference/cli"
+        text: "API 参考",
+        link: "/api-reference/cli"
       }
     ],
     sidebar: sidebar,
-    contributors:false,
-    contributorsText:"贡献者",
-    lastUpdatedText:'上次更新',
-    backToHome:"返回首页",
-    toggleColorMode:"切换主题颜色"
+    contributors: false,
+    contributorsText: "贡献者",
+    lastUpdatedText: '上次更新',
+    backToHome: "返回首页",
+    toggleColorMode: "切换主题颜色"
   }),
   plugins: [
     searchPlugin({
@@ -49,14 +56,14 @@ export default defineUserConfig({
       componentsDir: path.resolve(__dirname, './components'),
     }),
     commentPlugin({
-      provider:'Giscus',
-      repo:'20854390/docs',
-      repoId:'R_kgDOIXtFgQ',
-      category:'General',
-      categoryId:'DIC_kwDOIXtFgc4CSbrM'
+      provider: 'Giscus',
+      repo: '20854390/docs',
+      repoId: 'R_kgDOIXtFgQ',
+      category: 'General',
+      categoryId: 'DIC_kwDOIXtFgc4CSbrM'
     }),
     googleAnalyticsPlugin({
-      id:'G-4EC0D6T29F'
+      id: 'G-4EC0D6T29F'
     }),
   ]
 });

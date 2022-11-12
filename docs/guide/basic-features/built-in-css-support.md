@@ -1,6 +1,6 @@
 # 内置 CSS 支持
 
-:::detail 例子
+:::details 例子
 - [基本 CSS 示例](https://github.com/vercel/next.js/tree/canary/examples/basic-css)
 - [使用Tailwind CSS](https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss)
 :::

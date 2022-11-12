@@ -1,18 +1,21 @@
 # next/link
 
 :::details 示例
-- [Hello World](https://github.com/vercel/next.js/tree/canary/examples/hello-world)- [Active className on Link](https://github.com/vercel/next.js/tree/canary/examples/active-class-name)
+- [Hello World](https://github.com/vercel/next.js/tree/canary/examples/hello-world)
+- [Active className on Link](https://github.com/vercel/next.js/tree/canary/examples/active-class-name)
 :::
 
-> Before moving forward, we recommend you to read[Routing Introduction](/docs/guide/routing/introduction)first.
+> 在继续之前，我们建议您先阅读[路由介绍](/docs/guide/routing/introduction)。
 
-Client-side transitions between routes can be enabled via the`Link`component exported by`next/link`.
+路由之间的客户端转换可以通过由`next/link`导出的`Link`组件来启用。
 
-For an example, consider a`pages`directory with the following files:
+例如，考虑一个包含以下文件的`pages`目录：
 
-- `pages/index.js`- `pages/about.js`- `pages/blog/[slug].js`
+- `pages/index.js`
+- `pages/about.js`
+- `pages/blog/[slug].js`
 
-We can have a link to each of these pages like so:
+我们可以有一个链接到这些页面中的每一个，如下所示：
 
 ```jsx
 import Link from 'next/link'
@@ -34,18 +37,33 @@ function Home() {
 }
 
 export default Home
-
 ```
 
-`Link`accepts the following props:
+`Link` 接受以下props：
 
-- `href`- The path or URL to navigate to. This is the only required prop. It can also be an object, see[example here](/docs/guide/api-reference/next/link#with-url-object)- `as`- Optional decorator for the path that will be shown in the browser URL bar. Before Next.js 9.5.3 this was used for dynamic routes, check our[previous docs](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes)to see how it worked. Note: when this path differs from the one provided in`href`the previous`href`/`as`behavior is used as shown in the[previous docs](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes).- [`legacyBehavior`](#if-the-child-is-a-tag)- Changes behavior so that child must be`<a>`. Defaults to`false`.- [`passHref`](#if-the-child-is-a-custom-component-that-wraps-an-a-tag)- Forces`Link`to send the`href`property to its child. Defaults to`false`- `prefetch`- Prefetch the page in the background. Defaults to`true`. Any`<Link />`that is in the viewport (initially or through scroll) will be preloaded. Prefetch can be disabled by passing`prefetch={false}`. When`prefetch`is set to`false`, prefetching will still occur on hover. Pages using[Static Generation](/docs/guide/basic-features/data-fetching/get-static-props)will preload`JSON`files with the data for faster page transitions. Prefetching is only enabled in production.- [`replace`](#replace-the-url-instead-of-push)- Replace the current`history`state instead of adding a new url into the stack. Defaults to`false`- [`scroll`](#disable-scrolling-to-the-top-of-the-page)- Scroll to the top of the page after a navigation. Defaults to`true`- [`shallow`](/docs/guide/routing/shallow-routing)- Update the path of the current page without rerunning[`getStaticProps`](/docs/guide/basic-features/data-fetching/get-static-props),[`getServerSideProps`](/docs/guide/basic-features/data-fetching/get-server-side-props)or[`getInitialProps`](/docs/guide/api-reference/data-fetching/get-initial-props). Defaults to`false`- `locale`- The active locale is automatically prepended.`locale`allows for providing a different locale. When`false``href`has to include the locale as the default behavior is disabled.
+- `href`- 要导航到的路径或 URL。这是唯一需要的prop。 It can also be an object, see[example here](/docs/guide/api-reference/next/link#with-url-object)
 
-## If the route has dynamic segments
+- `as`- 将在浏览器 URL 栏中显示的路径的可选装饰器。在 Next.js 9.5.3 之前，这用于动态路由，请查看我们之前的文档以了解它是如何工作的。注意：当此路径与href之前提供的路径不同时， href/as行为将如之前的文档所示使用。
 
-There is nothing to do when linking to a[dynamic route](/docs/guide/routing/dynamic-routes), including[catch all routes](/docs/guide/routing/dynamic-routes#catch-all-routes), since Next.js 9.5.3 (for older versions check our[previous docs](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes)). However, it can become quite common and handy to use[interpolation](/docs/guide/routing/introduction#linking-to-dynamic-paths)or an[URL Object](#with-url-object)to generate the link.
+- [`legacyBehavior`](#if-the-child-is-a-tag)- 改变行为，使得子元素必须是`<a>`。默认为`false`。
 
-For example, the dynamic route`pages/blog/[slug].js`will match the following link:
+- [`passHref`](#if-the-child-is-a-custom-component-that-wraps-an-a-tag)- 强制 `Link` 将 `href` 属性发送给它的子元素。默认为`false`
+
+- `prefetch`- 在后台预取页面。默认为`true`。 视口中的任何`<Link />`（最初或通过滚动）都将被预加载。 可以通过传递 prefetch={false} 来禁用预取。 当`prefetch`设置为`false`时，预取仍然会在悬停时发生。 使用[静态生成](/docs/guide/basic-features/data-fetching/get-static-props)的页面将使用数据预加载`JSON`文件以加快页面转换。预取仅在生产中启用。
+
+- [`replace`](#replace-the-url-instead-of-push)- 替换当前的`history`状态，而不是将新的 url 添加到堆栈中。默认为`false`
+
+- [`scroll`](#disable-scrolling-to-the-top-of-the-page)- 导航后滚动到页面顶部。默认为`true`
+
+- [`shallow`](/docs/guide/routing/shallow-routing)- 更新当前页面的路径而不重新运行`getStaticProps`，`getServerSideProps`或者`getInitialProps`。默认为`false`
+
+- `locale`- 活动区域设置会自动添加到前面。`locale` 允许提供不同的语言环境。 当`false``href` 必须包含语言环境时，默认行为被禁用。
+
+## 如果路线有动态路段
+
+从 Next.js 9.5.3 开始，链接到动态路由时无需执行任何操作，包括捕获所有路由（对于旧版本，请查看我们以前的文档）。但是，使用插值或URL 对象生成链接会变得非常普遍和方便。
+
+例如，动态路由`pages/blog/[slug].js`将匹配以下链接：
 
 ```jsx
 import Link from 'next/link'
@@ -65,10 +83,9 @@ function Posts({ posts }) {
 }
 
 export default Posts
-
 ```
 
-## If the child is `<a>` tag
+## 如果子元素是`<a>`标签
 
 ```jsx
 import Link from 'next/link'
@@ -82,12 +99,11 @@ function Legacy() {
 }
 
 export default Legacy
-
 ```
 
-## If the child is a custom component that wraps an `<a>` tag
+## 如果子组件是用`<a>`标签包裹的自定义组件
 
-If the child of`Link`is a custom component that wraps an`<a>`tag, you must add`passHref`to`Link`. This is necessary if you’re using libraries like[styled-components](https://styled-components.com/). Without this, the`<a>`tag will not have the`href`attribute, which hurts your site's accessibility and might affect SEO. If you're using[ESLint](/docs/guide/basic-features/eslint#eslint-plugin), there is a built-in rule`next/link-passhref`to ensure correct usage of`passHref`.
+如果子组件是用`<a>`标签包裹的自定义组件，您必须将 `passHref` 添加到链接。如果您使用像样式组件这样的库，这是必需的。如果没有这个，`<a>` 标签将没有 `href` 属性，这会损害您网站的可访问性并可能影响 SEO。如果您使用的是 ESLint，则有一个内置规则 `next/link-passhref` 可确保正确使用 `passHref`。
 
 ```jsx
 import Link from 'next/link'
@@ -107,14 +123,14 @@ function NavLink({ href, name }) {
 }
 
 export default NavLink
-
 ```
 
-- If you’re using[emotion](https://emotion.sh/)’s JSX pragma feature (`@jsx jsx`), you must use`passHref`even if you use an`<a>`tag directly.- The component should support`onClick`property to trigger navigation correctly
+- 如果你使用 [emotion](https://emotion.sh/) 的 JSX pragma 功能（`@jsx jsx`），即使直接使用`<a>`标签，也必须使用`passHref`。
+- 该组件应支持`onClick`属性以正确触发导航
 
-## If the child is a functional component
+## 如果子元素是一个功能组件
 
-If the child of`Link`is a functional component, in addition to using`passHref`and`legacyBehavior`, you must wrap the component in[`React.forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref):
+如果`Link`子元素是一个功能组件，除了使用`passHref`和`legacyBehavior`，还必须将组件包裹在[`React.forwardRef`](https://reactjs.org/docs/react-api.html#reactforwardref):
 
 ```jsx
 import Link from 'next/link'
@@ -138,12 +154,11 @@ function Home() {
 }
 
 export default Home
-
 ```
 
-## With URL Object
+## 使用 URL 对象
 
-`Link`can also receive a URL object and it will automatically format it to create the URL string. Here's how to do it:
+`Link` 也可以接收一个 URL 对象，它会自动格式化它以创建 URL 字符串。这是如何做到的：
 
 ```jsx
 import Link from 'next/link'
@@ -176,42 +191,40 @@ function Home() {
 }
 
 export default Home
-
 ```
 
-The above example has a link to:
+上面的例子有一个链接：
 
-- A predefined route:`/about?name=test`- A[dynamic route](/docs/guide/routing/dynamic-routes):`/blog/my-post`
+- 预定义的路线:`/about?name=test`
+- [动态路由](/docs/guide/routing/dynamic-routes):`/blog/my-post`
 
-You can use every property as defined in the[Node.js URL module documentation](https://nodejs.org/api/url.html#url_url_strings_and_url_objects).
+您可以使用 [Node.js URL 模块文档](https://nodejs.org/api/url.html#url_url_strings_and_url_objects) 中定义的每个属性。
 
-## Replace the URL instead of push
+## 替换 URL 而不是推送
 
-The default behavior of the`Link`component is to`push`a new URL into the`history`stack. You can use the`replace`prop to prevent adding a new entry, as in the following example:
+`Link` 组件的默认行为是将新的 URL `push` 到`history` 堆栈中。您可以使用`replace`prop 来防止添加新条目，如下例所示：
 
 ```jsx
 <Link href="/about" replace>
   About us
 </Link>
-
 ```
 
-## Disable scrolling to the top of the page
+## 禁用滚动到页面顶部
 
-The default behavior of`Link`is to scroll to the top of the page. When there is a hash defined it will scroll to the specific id, like a normal`<a>`tag. To prevent scrolling to the top / hash`scroll={false}`can be added to`Link`:
+`Link` 的默认行为是滚动到页面顶部。当定义了一个哈希值时，它会滚动到特定的 id，就像一个普通的`<a>`标签。为了防止滚动到顶部/哈希`scroll={false}`可以添加到`Link`：
 
 ```jsx
 <Link href="/#hashid" scroll={false}>
   Disables scrolling to the top
 </Link>
-
 ```
 
-## With Next.js 13 Middleware
+## 使用 Next.js 13 中间件
 
-It's common to use[Middleware](/docs/guide/advanced-features/middleware)for authentication or other purposes that involve rewriting the user to a different page. In order for the`<Link />`component to properly prefetch links with rewrites via Middleware, you need to tell Next.js both the URL to display and the URL to prefetch. This is required to avoid un-necessary fetches to middleware to know the correct route to prefetch.
+通常使用中间件进行身份验证或涉及将用户重写到不同页面的其他目的。为了让`<Link />`组件通过中间件正确预取链接并进行重写，您需要告诉 Next.js 要显示的 URL 和要预取的 URL。这是为了避免不必要地获取中间件以了解预取的正确路径。
 
-For example, if you have want to serve a`/dashboard`route that has authenticated and visitor views, you may add something similar to the following in your Middleware to redirect the user to the correct page:
+例如，如果您想提供一个经过`/dashboard`身份验证和访问者视图的路由，您可以在中间件中添加类似于以下内容的内容，以将用户重定向到正确的页面：
 
 ```js
 // middleware.js
@@ -225,10 +238,9 @@ export function middleware(req) {
     }
   }
 }
-
 ```
 
-In this case, you would want to use the following code in your`<Link />`component (inside`pages/`):
+在这种情况下，您可能希望在`<Link />`组件（内部`pages/`）中使用以下代码：
 
 ```js
 // pages/index.js
@@ -244,7 +256,6 @@ export default function Page() {
     </Link>
   )
 }
-
 ```
 
-> **Note:**If you're using[Dynamic Routes](/docs/guide/routing/dynamic-routes), you'll need to adapt your`as`and`href`props. For example, if you have a Dynamic Route like`/dashboard/[user]`that you want to present differently via middleware, you would write:`<Link href={{ pathname: '/dashboard/authed/[user]', query: { user: username } }} as="/dashboard/[user]">Profile</Link>`.
+> **注意：**如果您正在使用[动态路由](/docs/guide/routing/dynamic-routes)，您需要调整您的`as`和`href`属性。例如，如果你有一个像`/dashboard/[user]`这样的动态路由，你想通过中间件以不同的方式呈现，你可以写：`<Link href={{ pathname: '/dashboard/authed/[user]' ，查询：{用户：用户名}}} as="/dashboard/[user]">个人资料</Link>`。

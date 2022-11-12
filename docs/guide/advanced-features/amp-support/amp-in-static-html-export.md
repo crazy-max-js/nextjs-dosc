@@ -13,14 +13,12 @@ Next.js 会自动在HTML版本中插入一个链接到AMP版本的页面，所�
 
 ```jsx
 <link rel="amphtml" href="/about.amp.html" />
-
 ```
 
 AMP版本的页面将包含到HTML页面的链接:
 
 ```jsx
 <link rel="canonical" href="/about" />
-
 ```
 
 当[`trailingSlash`](/docs/api-reference/next.config.js/trailing-slash)被启用时，为`pages/about.js`导出的页面将是:

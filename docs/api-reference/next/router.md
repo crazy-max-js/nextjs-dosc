@@ -1,10 +1,10 @@
 # next/router
 
-> Before moving forward, we recommend you to read[Routing Introduction](/docs/guide/routing/introduction)first.
+> 在继续之前，我们建议您先阅读[路由介绍](/docs/guide/routing/introduction)。
 
 ## useRouter
 
-If you want to access the[`router`object](#router-object)inside any function component in your app, you can use the`useRouter`hook, take a look at the following example:
+如果你想访问应用程序中任何功能组件内部的[`router`对象](#router-object)，你可以使用useRouter钩子，看看下面的例子：
 
 ```jsx
 import { useRouter } from 'next/router'
@@ -29,20 +29,39 @@ function ActiveLink({ children, href }) {
 }
 
 export default ActiveLink
-
 ```
 
-> `useRouter`is a[React Hook](https://reactjs.org/docs/hooks-intro.html), meaning it cannot be used with classes. You can either use[withRouter](#withrouter)or wrap your class in a function component.
+> `useRouter`是一个[React Hook](https://reactjs.org/docs/hooks-intro.html),这意味着它不能与类一起使用。 您可以使用[withRouter](#withrouter)或将您的类包装在函数组件中。
 
-## router object
+## router 对象
 
-The following is the definition of the`router`object returned by both[`useRouter`](#userouter)and[`withRouter`](#withrouter):
+下面是[`useRouter`](#userouter)和[`withRouter`](#withrouter)返回的`router`对象的定义：
 
-- `pathname`:`String`- The path for current route file that comes after`/pages`. Therefore,`basePath`,`locale`and trailing slash (`trailingSlash: true`) are not included.- `query`:`Object`- The query string parsed to an object, including[dynamic route](/docs/guide/routing/dynamic-routes)parameters. It will be an empty object during prerendering if the page doesn't use[Server-side Rendering](/docs/guide/basic-features/data-fetching/get-server-side-props). Defaults to`{}`- `asPath`:`String`- The path as shown in the browser including the search params and respecting the`trailingSlash`configuration.`basePath`and`locale`are not included.- `isFallback`:`boolean`- Whether the current page is in[fallback mode](/docs/guide/api-reference/data-fetching/get-static-paths#fallback-pages).- `basePath`:`String`- The active[basePath](/docs/guide/api-reference/next.config.js/basepath)(if enabled).- `locale`:`String`- The active locale (if enabled).- `locales`:`String[]`- All supported locales (if enabled).- `defaultLocale`:`String`- The current default locale (if enabled).- `domainLocales`:`Array<{domain, defaultLocale, locales}>`- Any configured domain locales.- `isReady`:`boolean`- Whether the router fields are updated client-side and ready for use. Should only be used inside of`useEffect`methods and not for conditionally rendering on the server. See related docs for use case with[automatically statically optimized pages](/docs/guide/advanced-features/automatic-static-optimization)- `isPreview`:`boolean`- Whether the application is currently in[preview mode](/docs/guide/advanced-features/preview-mode).
+- `pathname`:`String` - `pages` 之后的当前路由文件的路径。 因此，`basePath`、`locale` 和斜杠 (`trailingSlash: true`) 不包括在内。
 
-> Using the`asPath`field may lead to a mismatch between client and server if the page is rendered using server-side rendering or[automatic static optimization](/docs/guide/advanced-features/automatic-static-optimization). Avoid using`asPath`until the`isReady`field is`true`.
+- `query`:`Object`- 解析为对象的查询字符串, 包括[动态路由](/docs/guide/routing/dynamic-routes)参数. 如果页面没有使用[Server-side Rendering](/docs/guide/basic-features/data-fetching/get-server-side-props)，预渲染时会是一个空对象。 默认为`{}`
 
-The following methods are included inside`router`:
+- `asPath`:`String`- 浏览器中显示的路径包括搜索参数并遵守 `trailingSlash` 配置。`basePath`和`locale`不包括在内。
+
+- `isFallback`:`boolean`- 当前页面是否处于[fallback mode](/docs/guide/api-reference/data-fetching/get-static-paths#fallback-pages)。
+
+- `basePath`:`String`- 活动的[basePath](/docs/guide/api-reference/next.config.js/basepath)(如果启用)。
+
+- `locale`:`String`- 激活的语言环境 （如果启用）。
+
+- `locales`:`String[]`- 所有支持的语言环境（如果启用）。
+
+- `defaultLocale`:`String`- 当前的默认语言环境（如果启用）。
+
+- `domainLocales`:`Array<{domain, defaultLocale, locales}>`- 任何已配置的域语言环境。
+
+- `isReady`:`boolean`- 路由器字段是否在客户端更新并准备好使用。 只应在 `useEffect` 方法内部使用，而不应用于在服务器上有条件地呈现。 有关 [自动静态优化页面](/docs/guide/advanced-features/automatic-static-optimization) 的用例，请参阅相关文档
+
+- `isPreview`:`boolean`- 应用当前是否处于[预览模式](/docs/guide/advanced-features/preview-mode).
+
+> 如果页面使用服务端渲染或者[自动静态优化](/docs/guide/advanced-features/automatic-static-optimization)，使用`asPath`字段可能会导致客户端和服务端不匹配。 避免使用`asPath`，直到`isReady`字段为`true`。
+
+`router` 中包含以下方法：
 
 ### router.push
 
@@ -50,20 +69,29 @@ The following methods are included inside`router`:
 - [Using Router](https://github.com/vercel/next.js/tree/canary/examples/using-router)
 :::
 
-Handles client-side transitions, this method is useful for cases where[`next/link`](/docs/guide/api-reference/next/link)is not enough.
+[`next/link`](/docs/guide/api-reference/next/link)处理客户端转换，此方法对于不够用的情况很有用。
 
 ```jsx
 router.push(url, as, options)
-
 ```
 
-- `url`:`UrlObject | String`- The URL to navigate to (see[Node.JS URL module documentation](https://nodejs.org/api/url.html#legacy-urlobject)for`UrlObject`properties).- `as`:`UrlObject | String`- Optional decorator for the path that will be shown in the browser URL bar. Before Next.js 9.5.3 this was used for dynamic routes, check our[previous docs](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes)to see how it worked. Note: when this path differs from the one provided in`href`the previous`href`/`as`behavior is used as shown in the[previous docs](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes)- `options`- Optional object with the following configuration options:- `scroll`- Optional boolean, controls scrolling to the top of the page after navigation. Defaults to`true`- [`shallow`](/docs/guide/routing/shallow-routing): Update the path of the current page without rerunning[`getStaticProps`](/docs/guide/basic-features/data-fetching/get-static-props),[`getServerSideProps`](/docs/guide/basic-features/data-fetching/get-server-side-props)or[`getInitialProps`](/docs/guide/api-reference/data-fetching/get-initial-props). Defaults to`false`- `locale`- Optional string, indicates locale of the new page
+- `url`:`UrlObject | String`- 要导航到的 URL（有关属性，请参阅[Node.JS URL 模块文档](https://nodejs.org/api/url.html#legacy-urlobject)UrlObject）。
 
-> You don't need to use`router.push`for external URLs.[window.location](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)is better suited for those cases.
+- `as`:`UrlObject | String`- 将在浏览器 URL 栏中显示的路径的可选装饰器。 在 Next.js 9.5.3 之前，这用于动态路由，请查看我们[之前的文档](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes)以了解它是如何工作的。注意：当此路径不同于上一个/行为中提供的路径时，`href`如上`href`一个`as`文档中所示 
 
-#### Usage
+- `options`- 具有以下配置选项的可选对象：
 
-Navigating to`pages/about.js`, which is a predefined route:
+- - `scroll`- 可选布尔值，控制导航后滚动到页面顶部。默认为`true`
+
+- - [`shallow`](/docs/guide/routing/shallow-routing): 更新当前页面的路径而不重新运行[`getStaticProps`](/docs/guide/basic-features/data-fetching/get-static-props),[`getServerSideProps`](/docs/guide/basic-features/data-fetching/get-server-side-props)或[`getInitialProps`](/docs/guide/api-reference/data-fetching/get-initial-props). 默认为`false`
+
+- - `locale`- 可选字符串，指示新页面的语言环境
+
+> 您不需要 `router.push` 用于外部 URL。[window.location](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)更适合这些情况。
+
+#### 用法
+
+导航到`pages/about.js`，这是一个预定义的路由：
 
 ```jsx
 import { useRouter } from 'next/router'
@@ -77,10 +105,9 @@ export default function Page() {
     </button>
   )
 }
-
 ```
 
-Navigating`pages/post/[pid].js`, which is a dynamic route:
+导航`pages/post/[pid].js`，这是一个动态路由：
 
 ```jsx
 import { useRouter } from 'next/router'
@@ -94,10 +121,9 @@ export default function Page() {
     </button>
   )
 }
-
 ```
 
-Redirecting the user to`pages/login.js`, useful for pages behind[authentication](/docs/authentication):
+将用户重定向到 `pages/login.js`，这对 [authentication](/guide/authentication) 后面的页面很有用：
 
 ```jsx
 import { useEffect } from 'react'
@@ -118,12 +144,11 @@ export default function Page() {
 
   return <p>Redirecting...</p>
 }
-
 ```
 
-#### Resetting state after navigation
+#### 导航后重置状态
 
-When navigating to the same page in Next.js, the page's state**will not**be reset by default as react does not unmount unless the parent component has changed.
+当导航到 Next.js 中的同一页面时，默认情况下**不会**重置页面的状态，因为除非父组件发生更改，否则 react 不会卸载。
 
 ```jsx
 // pages/[slug].js
@@ -143,23 +168,21 @@ export default function Page(props) {
     </div>
   )
 }
-
 ```
 
-In the above example, navigating between`/one`and`/two`**will not**reset the count . The`useState`is maintained between renders because the top-level React component,`Page`, is the same.
+在上面的例子中，在`one`和`two`之间导航不会重置计数。 `useState` 在渲染之间保持不变，因为顶级 React 组件 `Page` 是相同的。
 
-If you do not want this behavior, you have a couple of options:
+如果您不希望这种行为，您有几个选择：
 
-- Manually ensure each state is updated using`useEffect`. In the above example, that could look like:
+- 使用 useEffect 手动确保更新每个状态。在上面的示例中，它可能看起来像：
 
 ```jsx
 useEffect(() => {
   setCount(0)
 }, [router.query.slug])
-
 ```
 
-- Use a React`key`to[tell React to remount the component](https://reactjs.org/docs/lists-and-keys.html#keys). To do this for all pages, you can use a custom app:
+- 使用 React`key` 来[告诉 React 重新挂载组件](https://reactjs.org/docs/lists-and-keys.html#keys)。 要对所有页面执行此操作，您可以使用自定义应用程序：
 
 ```jsx
 // pages/_app.js
@@ -169,12 +192,11 @@ export default function MyApp({ Component, pageProps }) {
   const router = useRouter()
   return <Component key={router.asPath} {...pageProps} />
 }
-
 ```
 
-#### With URL object
+#### 使用 URL 对象
 
-You can use a URL object in the same way you can use it for[`next/link`](/docs/guide/api-reference/next/link#with-url-object). Works for both the`url`and`as`parameters:
+您可以像将其用于 [`next/link`](/docs/guide/api-reference/next/link#with-url-object) 一样使用 URL 对象。 适用于`url`和`as`参数：
 
 ```jsx
 import { useRouter } from 'next/router'
@@ -196,23 +218,21 @@ export default function ReadMore({ post }) {
     </button>
   )
 }
-
 ```
 
 ### router.replace
 
-Similar to the`replace`prop in[`next/link`](/docs/guide/api-reference/next/link),`router.replace`will prevent adding a new URL entry into the`history`stack.
+类似于[`next/link`](/docs/guide/api-reference/next/link)中的`replace`prop,`router.replace` 将阻止向`history` 堆栈添加新的 URL 条目。
 
 ```jsx
 router.replace(url, as, options)
-
 ```
 
-- The API for`router.replace`is exactly the same as the API for[`router.push`](#routerpush).
+- `router.replace` 的 API 与 [`router.push`](#routerpush) 的 API 完全相同。
 
 #### Usage
 
-Take a look at the following example:
+看看下面的例子：
 
 ```jsx
 import { useRouter } from 'next/router'
@@ -226,25 +246,26 @@ export default function Page() {
     </button>
   )
 }
-
 ```
 
 ### router.prefetch
 
-Prefetch pages for faster client-side transitions. This method is only useful for navigations without[`next/link`](/docs/guide/api-reference/next/link), as`next/link`takes care of prefetching pages automatically.
+预取页面以加快客户端转换。 此方法仅对没有 [`next/link`](/docs/guide/api-reference/next/link) 的导航有用，因为 `next/link` 会自动处理预取页面。
 
-> This is a production only feature. Next.js doesn't prefetch pages in development.
+> 这是一个仅限生产的功能。 Next.js 不会在开发中预取页面。
 
 ```jsx
 router.prefetch(url, as, options)
-
 ```
 
-- `url`- The URL to prefetch, including explicit routes (e.g.`/dashboard`) and dynamic routes (e.g.`/product/[id]`)- `as`- Optional decorator for`url`. Before Next.js 9.5.3 this was used to prefetch dynamic routes, check our[previous docs](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes)to see how it worked- `options`- Optional object with the following allowed fields:- `locale`- allows providing a different locale from the active one. If`false`,`url`has to include the locale as the active locale won't be used.
+- `url`- 要预取的 URL，包括显式路由（例如`/dashboard`）和动态路由（例如`/product/[id]`）
+- `as`- `url` 的可选装饰器。 在 Next.js 9.5.3 之前，它用于预取动态路由，请查看我们的[以前的文档](/docs/tag/v9.5.2/api-reference/next/link#dynamic-routes) 了解它是如何工作的
+- `options`- 具有以下允许字段的可选对象：
+- - `locale`- 允许提供与活动区域不同的区域设置。如果为`false`，`url`必须包含语言环境，因为不会使用活动语言环境。
 
-#### Usage
+#### 用法
 
-Let's say you have a login page, and after a login, you redirect the user to the dashboard. For that case, we can prefetch the dashboard to make a faster transition, like in the following example:
+假设您有一个登录页面，登录后，您将用户重定向到仪表板。 对于这种情况，我们可以预取仪表板以进行更快的转换，如下例所示：
 
 ```jsx
 import { useCallback, useEffect } from 'react'
@@ -279,25 +300,27 @@ export default function Login() {
     </form>
   )
 }
-
 ```
 
 ### router.beforePopState
 
-In some cases (for example, if using a[Custom Server](/docs/guide/advanced-features/custom-server)), you may wish to listen to[popstate](https://developer.mozilla.org/en-US/docs/Web/Events/popstate)and do something before the router acts on it.
+在某些情况下（例如，如果使用[自定义服务器](/docs/guide/advanced-features/custom-server)）， 
+您可能希望监听[popstate](https://developer.mozilla.org/en-US/docs/Web/Events/popstate) 并在路由器对它采取行动之前做一些事情。
 
 ```jsx
 router.beforePopState(cb)
-
 ```
 
-- `cb`- The function to run on incoming`popstate`events. The function receives the state of the event as an object with the following props:- `url`:`String`- the route for the new state. This is usually the name of a`page`- `as`:`String`- the url that will be shown in the browser- `options`:`Object`- Additional options sent by[router.push](#routerpush)
+- `cb`- 在传入的`popstate`事件上运行的函数。该函数接收事件的状态作为具有以下道具的对象：
+- - `url`:`String`- 新状态的路线。这通常是`page`的名称
+- - `as`:`String`- 将在浏览器中显示的 url
+- - `options`:`Object`- [router.push](#routerpush) 发送的附加选项
 
-If`cb`returns`false`, the Next.js router will not handle`popstate`, and you'll be responsible for handling it in that case. See[Disabling file-system routing](/docs/guide/advanced-features/custom-server#disabling-file-system-routing).
+如果`cb`返回`false`, Next.js 路由器不会处理`popstate`，在这种情况下你将负责处理它。 查看[禁用文件系统路由](/docs/guide/advanced-features/custom-server#disabling-file-system-routing).
 
-#### Usage
+#### 用法
 
-You could use`beforePopState`to manipulate the request, or force a SSR refresh, as in the following example:
+您可以使用`beforePopState`来操纵请求，或强制刷新 SSR，如下例所示：
 
 ```jsx
 import { useEffect } from 'react'
@@ -321,14 +344,13 @@ export default function Page() {
 
   return <p>Welcome to the page</p>
 }
-
 ```
 
 ### router.back
 
-Navigate back in history. Equivalent to clicking the browser’s back button. It executes`window.history.back()`.
+回顾历史。相当于点击浏览器的后退按钮。它执行`window.history.back()`。
 
-#### Usage
+#### 用法
 
 ```jsx
 import { useRouter } from 'next/router'
@@ -342,14 +364,13 @@ export default function Page() {
     </button>
   )
 }
-
 ```
 
 ### router.reload
 
-Reload the current URL. Equivalent to clicking the browser’s refresh button. It executes`window.location.reload()`.
+重新加载当前 URL。相当于点击浏览器的刷新按钮。它执行`window.location.reload()`。
 
-#### Usage
+#### 用法
 
 ```jsx
 import { useRouter } from 'next/router'
@@ -363,24 +384,29 @@ export default function Page() {
     </button>
   )
 }
-
 ```
 
 ### router.events
 
 :::details 示例
-- [With a page loading indicator](https://github.com/vercel/next.js/tree/canary/examples/with-loading)
+- [带有页面加载指示器](https://github.com/vercel/next.js/tree/canary/examples/with-loading)
 :::
 
-You can listen to different events happening inside the Next.js Router. Here's a list of supported events:
+您可以监听 Next.js 路由器内部发生的不同事件。以下是支持的事件列表：
 
-- `routeChangeStart(url, { shallow })`- Fires when a route starts to change- `routeChangeComplete(url, { shallow })`- Fires when a route changed completely- `routeChangeError(err, url, { shallow })`- Fires when there's an error when changing routes, or a route load is cancelled- `err.cancelled`- Indicates if the navigation was cancelled- `beforeHistoryChange(url, { shallow })`- Fires before changing the browser's history- `hashChangeStart(url, { shallow })`- Fires when the hash will change but not the page- `hashChangeComplete(url, { shallow })`- Fires when the hash has changed but not the page
+- `routeChangeStart(url, { shallow })`- 当路由开始改变时触发
+- `routeChangeComplete(url, { shallow })`- 当路由完全改变时触发
+- `routeChangeError(err, url, { shallow })`- 当更改路线时出现错误或取消路线加载时触发
+- - `err.cancelled`- 指示导航是否已取消
+- `beforeHistoryChange(url, { shallow })`- 在更改浏览器的历史记录之前触发
+- `hashChangeStart(url, { shallow })`- 当哈希将更改但页面不会更改时触发
+- `hashChangeComplete(url, { shallow })`- 当哈希值改变但页面没有改变时触发
 
-> **Note:**Here`url`is the URL shown in the browser, including the[`basePath`](/docs/guide/api-reference/next.config.js/basepath).
+> **注意：**这里的`url`是浏览器中显示的URL，包括[`basePath`](/docs/guide/api-reference/next.config.js/basepath).
 
-#### Usage
+#### 用法
 
-For example, to listen to the router event`routeChangeStart`, open or create`pages/_app.js`and subscribe to the event, like so:
+例如，要监听路由器事件`routeChangeStart`，打开或创建`pages/_app.js`并订阅该事件，如下所示：
 
 ```jsx
 import { useEffect } from 'react'
@@ -409,14 +435,13 @@ export default function MyApp({ Component, pageProps }) {
 
   return <Component {...pageProps} />
 }
-
 ```
 
-> We use a[Custom App](/docs/guide/advanced-features/custom-app)(`pages/_app.js`) for this example to subscribe to the event because it's not unmounted on page navigations, but you can subscribe to router events on any component in your application.
+> 我们使用 [Custom App](/docs/guide/advanced-features/custom-app)(`pages/_app.js`) 来订阅事件，因为它没有在页面导航上卸载，但您可以订阅路由应用程序中任何组件上的事件。
 
-Router events should be registered when a component mounts ([useEffect](https://reactjs.org/docs/hooks-effect.html)or[componentDidMount](https://reactjs.org/docs/react-component.html#componentdidmount)/[componentWillUnmount](https://reactjs.org/docs/react-component.html#componentwillunmount)) or imperatively when an event happens.
+组件挂载时应注册路由器事件 ([useEffect](https://reactjs.org/docs/hooks-effect.html)或[componentDidMount](https://reactjs.org/docs/react-component.html) #componentdidmount)/[componentWillUnmount](https://reactjs.org/docs/react-component.html#componentwillunmount)) 或在事件发生时强制执行。
 
-If a route load is cancelled (for example, by clicking two links rapidly in succession),`routeChangeError`will fire. And the passed`err`will contain a`cancelled`property set to`true`, as in the following example:
+如果路由加载被取消（例如，通过连续快速单击两个链接），将触发 `routeChangeError`。并且传递的`err` 将包含一个设置为`true` 的`cancelled` 属性，如下例所示：
 
 ```jsx
 import { useEffect } from 'react'
@@ -443,20 +468,19 @@ export default function MyApp({ Component, pageProps }) {
 
   return <Component {...pageProps} />
 }
-
 ```
 
-## Potential ESLint errors
+## 潜在的 ESLint 错误
 
-Certain methods accessible on the`router`object return a Promise. If you have the ESLint rule,[no-floating-promises](https://typescript-eslint.io/rules/no-floating-promises)enabled, consider disabling it either globally, or for the affected line.
+在 router 对象上可访问的某些方法返回一个 Promise。如果您启用了 ESLint 规则[no-floating-promises](https://typescript-eslint.io/rules/no-floating-promises)，请考虑全局或为受影响的行禁用它。
 
-If your application needs this rule, you should either`void`the promise – or use an`async`function,`await`the Promise, then void the function call.**This is not applicable when the method is called from inside an`onClick`handler**.
+如果您的应用程序需要此规则，您应该要么`void`承诺 - 或者使用`async`函数，`await`承诺，然后取消函数调用。**当从内部调用方法时，这不适用`onClick` 处理程序**。
 
-The affected methods are:
+受影响的方法是：
 
 - `router.push`- `router.replace`- `router.prefetch`
 
-### Potential solutions
+### 潜在的解决方案
 
 ```jsx
 import { useEffect } from 'react'
@@ -489,14 +513,13 @@ export default function Page() {
 
   return <p>Redirecting...</p>
 }
-
 ```
 
 ## withRouter
 
-If[`useRouter`](#userouter)is not the best fit for you,`withRouter`can also add the same[`router`object](#router-object)to any component.
+如果[`useRouter`](#userouter) 不是最适合您的，`withRouter` 也可以将相同的[`router`对象](#router-object) 添加到任何组件。
 
-### Usage
+### 用法
 
 ```jsx
 import { withRouter } from 'next/router'
@@ -506,12 +529,11 @@ function Page({ router }) {
 }
 
 export default withRouter(Page)
-
 ```
 
 ### TypeScript
 
-To use class components with`withRouter`, the component needs to accept a router prop:
+要将类组件与`withRouter`一起使用，组件需要接受路由器属性：
 
 ```tsx
 import React from 'react'
@@ -530,5 +552,4 @@ class MyComponent extends React.Component<MyComponentProps> {
 }
 
 export default withRouter(MyComponent)
-
 ```

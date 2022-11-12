@@ -1,14 +1,14 @@
-# Environment Variables
+# 环境变量
 
-> Since the release of[Next.js 9.4](/blog/next-9-4)we now have a more intuitive and ergonomic experience for[adding environment variables](/docs/guide/basic-features/environment-variables). Give it a try!
+> 自 [Next.js 9.4](/blog/next-9-4) 发布以来，我们现在对[添加环境变量](/docs/guide/basic-features/environment-variables) 有了更直观、更符合人体工学的体验。试试看！
 
 :::details 示例
 - [With env](https://github.com/vercel/next.js/tree/canary/examples/with-env-from-next-config-js)
 :::
 
-> Note: environment variables specified in this way willalwaysbe included in the JavaScript bundle, prefixing the environment variable name with`NEXT_PUBLIC_`only has an effect when specifying them[through the environment or .env files](/docs/guide/basic-features/environment-variables).
+> 注意：以这种方式指定的环境变量将始终包含在 JavaScript 包中，在环境变量名称前加上`NEXT_PUBLIC_`只有在[通过环境或 .env 文件]（/docs/guide/basic-features/环境变量）。
 
-To add environment variables to the JavaScript bundle, open`next.config.js`and add the`env`config:
+要将环境变量添加到 JavaScript 包，请打开`next.config.js`并添加`env`配置：
 
 ```js
 module.exports = {
@@ -16,10 +16,9 @@ module.exports = {
     customKey: 'my-value',
   },
 }
-
 ```
 
-Now you can access`process.env.customKey`in your code. For example:
+现在您可以在代码中访问 `process.env.customKey`。例如：
 
 ```jsx
 function Page() {
@@ -27,27 +26,18 @@ function Page() {
 }
 
 export default Page
-
 ```
 
-Next.js will replace`process.env.customKey`with`'my-value'`at build time. Trying to destructure`process.env`variables won't work due to the nature of webpack[DefinePlugin](https://webpack.js.org/plugins/define-plugin/).
+Next.js 将在构建时将 `process.env.customKey` 替换为 `my-value`。由于 webpack [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) 的性质，试图解构 `process.env` 变量是行不通的。
 
-For example, the following line:
+例如，以下行：
 
 ```jsx
 return <h1>The value of customKey is: {process.env.customKey}</h1>
-
 ```
 
-Will end up being:
+最终会是：
 
 ```jsx
 return <h1>The value of customKey is: {'my-value'}</h1>
-
 ```
-
-## Related
-
-
-
-

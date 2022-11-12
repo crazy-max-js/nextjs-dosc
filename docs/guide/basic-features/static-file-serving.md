@@ -1,8 +1,8 @@
-# Static File Serving
+# 静态文件服务
 
-Next.js can serve static files, like images, under a folder called`public`in the root directory. Files inside`public`can then be referenced by your code starting from the base URL (`/`).
+Next.js可以提供静态文件，比如图像，在根目录下一个名为`public`的文件夹下。`public`中的文件可以由你的代码从基URL开始引用 (`/`).
 
-For example, if you add an image to`public/me.png`, the following code will access the image:
+例如，如果你添加一个图像到`public/me.png`，下面的代码将访问该图像:
 
 ```jsx
 import Image from 'next/image'
@@ -12,15 +12,14 @@ function Avatar() {
 }
 
 export default Avatar
-
 ```
 
-> Note:`next/image`requires Next.js 10 or later.
+> 注意:`next/image`需要next .js10或更高版本。
 
-This folder is also useful for`robots.txt`,`favicon.ico`, Google Site Verification, and any other static files (including`.html`)!
+这个文件夹对`robots.txt`,`favicon.ico`，谷歌站点验证，和任何其他静态文件(包括`.html`)!
 
-> **Note**: Don't name the`public`directory anything else. The name cannot be changed and is the only directory used to serve static assets.
+> **注意**: 不要给“公共”目录起任何其他名字。名称不能更改，并且是用于提供静态资产的惟一目录。
 
-> **Note**: Be sure to not have a static file with the same name as a file in the`pages/`directory, as this will result in an error.Read more:[https://nextjs.org/docs/messages/conflicting-public-file-page](/docs/messages/conflicting-public-file-page)
+> **注意**: 请确保不要使用与“pages/”目录中的文件同名的静态文件，因为这将导致错误。阅读更多:[https://nextjs.org/docs/messages/conflicting-public-file-page](/docs/messages/conflicting-public-file-page)
 
-> **Note**: Only assets that are in the`public`directory at[build time](/docs/guide/api-reference/cli#build)will be served by Next.js. Files added at runtime won't be available. We recommend using a third party service like[AWS S3](https://aws.amazon.com/s3/)for persistent file storage.
+> **注意**: 只有在[构建时](/docs/guide/api-reference/cli#build)在`public`目录中的资产才会被Next.js服务。在运行时添加的文件将不可用。我们建议使用第三方服务，如[AWS S3](https://aws.amazon.com/s3/)进行持久文件存储。

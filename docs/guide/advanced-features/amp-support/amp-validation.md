@@ -14,7 +14,6 @@ module.exports = {
     validator: './custom_validator.js',
   },
 }
-
 ```
 
 ### 跳过AMP验证
@@ -27,5 +26,4 @@ experimental: {
     skipValidation: true
   }
 }
-
 ```

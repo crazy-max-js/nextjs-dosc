@@ -23,7 +23,6 @@ function MyAmpPage() {
 }
 
 export default MyAmpPage
-
 ```
 
 上面的例子使用了[`amp-timeago`](https://amp.dev/documentation/components/amp-timeago/?format=websites)组件。
@@ -63,5 +62,4 @@ function MyAmpPage() {
 }
 
 export default MyAmpPage
-
 ```

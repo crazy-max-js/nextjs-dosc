@@ -1,29 +1,28 @@
-# Optimizing Fonts
+# 字体优化
 
-[**`@next/font`**](/docs/guide/api-reference/next/font)will automatically optimize your fonts (including custom fonts) and remove external network requests for improved privacy and performance.
+[**`@next/font`**](/docs/guide/api-reference/next/font)将自动优化您的字体（包括自定义字体）并删除外部网络请求以提高隐私和性能。
 
-## Overview
+## 概述
 
-`@next/font`includes**built-in automatic self-hosting**foranyfont file. This means you can optimally load web fonts with zero layout shift, thanks to the underlying CSS`size-adjust`property used.
+`@next/font`包含任何字体文件**内置自动自托管**。 这意味着由于使用了底层的 CSS`size-adjust` 属性，您可以在零布局偏移的情况下以最佳方式加载 Web 字体。
 
-This new font system also allows you to conveniently use all Google Fonts with performance and privacy in mind. CSS and font files are downloaded at build time and self-hosted with the rest of your static assets.**No requests are sent to Google by the browser.**
+这个新的字体系统还允许您在考虑性能和隐私的情况下方便地使用所有 Google 字体。 CSS 和字体文件在构建时下载，并与您的其余静态资产一起自行托管。**浏览器不会向 Google 发送任何请求。**
 
-## Usage
+## 用法
 
-To get started, install`@next/font`:
+首先，安装`@next/font`:
 
 ```bash
 npm install @next/font
-
 ```
 
-### Google Fonts
+### 谷歌字体
 
-Automatically self-host any Google Font. Fonts are included in the deployment and served from the same domain as your deployment.**No requests are sent to Google by the browser.**
+自动托管任何 Google 字体。字体包含在部署中，并从与您的部署相同的域提供服务。**浏览器不会向 Google 发送任何请求。**
 
-Import the font you would like to use from`@next/font/google`as a function. We recommend using[**variable fonts**](https://fonts.google.com/variablefonts)for the best performance and flexibility.
+从`@next/font/google`作为函数导入你想使用的字体。 我们推荐使用[**variable fonts**](https://fonts.google.com/variablefonts)以获得最佳性能和灵活性。
 
-To use the font in all your pages, add it to[`_app.js`file](/docs/guide/advanced-features/custom-app)under`/pages`as shown below:
+在所有页面中使用该字体, 将其添加到`/pages`下的[`_app.js`文件](/docs/guide/advanced-features/custom-app) 如下所示:
 
 ```js
 // pages/_app.js
@@ -39,10 +38,9 @@ export default function MyApp({ Component, pageProps }) {
     </main>
   )
 }
-
 ```
 
-If you can't use a variable font, you will**need to specify a weight**:
+如果不能使用可变字体，则需要指定粗细：
 
 ```js
 // pages/_app.js
@@ -59,12 +57,11 @@ export default function MyApp({ Component, pageProps }) {
     </main>
   )
 }
-
 ```
 
-#### Apply the font in `<head>`
+#### 在 `<head>` 中应用字体
 
-You can also use the font without a wrapper and`className`by injecting it inside the`<head>`as follows:
+你也可以在没有包装器和 className 的情况下使用字体，方法是将它注入到 `<head>` 中，如下所示：
 
 ```js
 // pages/_app.js
@@ -84,12 +81,11 @@ export default function MyApp({ Component, pageProps }) {
     </>
   )
 }
-
 ```
 
-#### Single page usage
+#### 单页使用
 
-To use the font on a single page, add it to the specific page as shown below:
+要在单个页面上使用字体，请将其添加到特定页面，如下所示：
 
 ```js
 // pages/index.js
@@ -104,20 +100,21 @@ export default function Home() {
     </div>
   )
 }
-
 ```
 
-#### Specifying a subset
+#### 指定一个子集
 
-Google Fonts are automatically[subset](https://fonts.google.com/knowledge/glossary/subsetting). This reduces the size of the font file and improves performance. You'll need to define which of these subsets you want to preload. Failing to specify any subsets while[`preload`](/docs/guide/api-reference/next/font#preload)is true will result in a warning.
+谷歌字体是自动的[子集](https://fonts.google.com/knowledge/glossary/subsetting)。 这会减小字体文件的大小并提高性能。 您需要定义要预加载的这些子集。 当为 true 时未能指定任何子集[`preload`](/docs/guide/api-reference/next/font#preload)将发出警告。
 
-This can be done in 2 ways:
+这可以通过两种方式完成：
 
-- On a font per font basis by adding it to the function call```js
+- 通过将其添加到函数调用中，以每种字体为基础
+```js
 // pages/_app.js
 const inter = Inter({ subsets: ['latin'] })
-
-```- Globally for all your fonts in your`next.config.js````js
+```
+- 全局用于您的`next.config.js`中的所有字体
+```js
 // next.config.js
 module.exports = {
   experimental: {
@@ -126,14 +123,14 @@ module.exports = {
     ],
   },
 }
+```
+- 如果两者都配置，则使用函数调用中的子集。
 
-```- If both are configured, the subset in the function call is used.
+查看[字体 API 参考](/docs/api-reference/next/font#nextfontgoogle)更多信息。
 
-View the[Font API Reference](/docs/api-reference/next/font#nextfontgoogle)for more information.
+### 本地字体
 
-### Local Fonts
-
-Import`@next/font/local`and specify the`src`of your local font file. We recommend using[**variable fonts**](https://fonts.google.com/variablefonts)for the best performance and flexibility.
+导入`@next/font/local`并指定本地字体文件的`src`。我们建议使用[**variable fonts**](https://fonts.google.com/variablefonts)以获得最佳性能和灵活性。
 
 ```js
 // pages/_app.js
@@ -149,14 +146,13 @@ export default function MyApp({ Component, pageProps }) {
     </main>
   )
 }
-
 ```
 
-View the[Font API Reference](/docs/guide/api-reference/next/font#nextfontlocal)for more information.
+查看[字体 API 参考](/docs/guide/api-reference/next/font#nextfontlocal)更多信息。
 
-## Preloading
+## 预加载
 
-When a font function is called on a page of your site, it is not globally available and preloaded on all routes. Rather, the font is only preloaded on the related route/s based on the type of file where it is used:
+当在您站点的页面上调用字体函数时，它不是全局可用的，而是在所有路由上预加载的。 Rather, the font is only preloaded on the related route/s based on the type of file where it is used:
 
 - if it's a[unique page](/docs/guide/basic-features/pages), it is preloaded on the unique route for that page- if it's in the[custom App](/docs/guide/advanced-features/custom-app), it is preloaded on all the routes of the site under`/pages`
 

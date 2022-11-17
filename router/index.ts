@@ -388,7 +388,7 @@ export const sidebar: SidebarConfig = {
     },
     {
       text:'@next/font',
-      link:'/api-reference/@next/font'
+      link:'/api-reference/next/font'
     },
     {
       text:'next/legacy/image',

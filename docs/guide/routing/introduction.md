@@ -1,36 +1,40 @@
-# Routing
+# 路由
 
-Next.js has a file-system based router built on the[concept of pages](/docs/guide/basic-features/pages).
+Next.js拥有基于[页面概念](/docs/guide/basic-features/pages)的文件系统路由器。
 
-When a file is added to the`pages`directory, it's automatically available as a route.
+当一个文件被添加到`pages`目录中时，它将自动作为路由可用。
 
-The files inside the`pages`directory can be used to define most common patterns.
+`pages`目录中的文件可用于定义最常见的模式。
 
 #### Index routes
 
-The router will automatically route files named`index`to the root of the directory.
+路由器会自动将名为`index`的文件路由到目录的根目录。
 
-- `pages/index.js`→`/`- `pages/blog/index.js`→`/blog`
+- `pages/index.js`→`/`
+- `pages/blog/index.js`→`/blog`
 
-#### Nested routes
+#### 嵌套路由
 
-The router supports nested files. If you create a nested folder structure, files will automatically be routed in the same way still.
+路由器支持嵌套文件。如果您创建了一个嵌套的文件夹结构，文件将自动以相同的方式路由。
 
-- `pages/blog/first-post.js`→`/blog/first-post`- `pages/dashboard/settings/username.js`→`/dashboard/settings/username`
+- `pages/blog/first-post.js`→`/blog/first-post`
+- `pages/dashboard/settings/username.js`→`/dashboard/settings/username`
 
-#### Dynamic route segments
+#### 动态路由段
 
-To match a dynamic segment, you can use the bracket syntax. This allows you to match named parameters.
+要匹配动态段，可以使用括号语法。这允许您匹配已命名的参数。
 
-- `pages/blog/[slug].js`→`/blog/:slug`(`/blog/hello-world`)- `pages/[username]/settings.js`→`/:username/settings`(`/foo/settings`)- `pages/post/[...all].js`→`/post/*`(`/post/2020/id/title`)
+- `pages/blog/[slug].js`→`/blog/:slug`(`/blog/hello-world`)
+- `pages/[username]/settings.js`→`/:username/settings`(`/foo/settings`)
+- `pages/post/[...all].js`→`/post/*`(`/post/2020/id/title`)
 
-> Check out the[Dynamic Routes documentation](/docs/guide/routing/dynamic-routes)to learn more about how they work.
+> 查看[动态路由文档](/docs/guide/routing/dynamic-routes)了解更多关于它们是如何工作的。
 
-## Linking between pages
+## 页面之间的链接
 
-The Next.js router allows you to do client-side route transitions between pages, similar to a single-page application.
+Next.js路由器允许您在页面之间进行客户端路由转换，类似于单页应用程序。
 
-A React component called`Link`is provided to do this client-side route transition.
+提供了一个名为`Link`的React组件来完成这种客户端路由转换。
 
 ```jsx
 import Link from 'next/link'
@@ -52,18 +56,19 @@ function Home() {
 }
 
 export default Home
-
 ```
 
-The example above uses multiple links. Each one maps a path (`href`) to a known page:
+上面的例子使用了多个链接。每一个都将一个路径 (`href`) 映射到一个已知的页面:
 
-- `/`→`pages/index.js`- `/about`→`pages/about.js`- `/blog/hello-world`→`pages/blog/[slug].js`
+- `/`→`pages/index.js`
+- `/about`→`pages/about.js`
+- `/blog/hello-world`→`pages/blog/[slug].js`
 
-Any`<Link />`in the viewport (initially or through scroll) will be prefetched by default (including the corresponding data) for pages using[Static Generation](/docs/guide/basic-features/data-fetching/get-static-props). The corresponding data for[server-rendered](/docs/guide/basic-features/data-fetching/get-server-side-props)routes is fetchedonly whenthe`<Link />`is clicked.
+对于使用[静态生成](/docs/guide/basic-features/data-fetching/get-static-props)的页面，默认情况下会预取视口中的任何`<Link />`（最初或通过滚动）（包括相应的数据）。仅当单击`<Link />`时，才会获取[服务器渲染](/docs/guide/basic-features/data-fetching/get-server-side-props)路由的相应数据。
 
-### Linking to dynamic paths
+### 链接到动态路径
 
-You can also use interpolation to create the path, which comes in handy for[dynamic route segments](#dynamic-route-segments). For example, to show a list of posts which have been passed to the component as a prop:
+您还可以使用插值来创建路径，这对于[动态路线段](#dynamic-route-segments)非常有用。例如，要显示已作为道具传递给组件的帖子列表：
 
 ```jsx
 import Link from 'next/link'
@@ -83,12 +88,11 @@ function Posts({ posts }) {
 }
 
 export default Posts
-
 ```
 
-> [`encodeURIComponent`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)is used in the example to keep the path utf-8 compatible.
+> [`encodeURIComponent`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)在示例中用于保持路径 utf-8 兼容。
 
-Alternatively, using a URL Object:
+或者，使用 URL 对象：
 
 ```jsx
 import Link from 'next/link'
@@ -113,26 +117,26 @@ function Posts({ posts }) {
 }
 
 export default Posts
-
 ```
 
-Now, instead of using interpolation to create the path, we use a URL object in`href`where:
+现在，我们不使用插值来创建路径，而是在`href`中使用 URL 对象：
 
-- `pathname`is the name of the page in the`pages`directory.`/blog/[slug]`in this case.- `query`is an object with the dynamic segment.`slug`in this case.
+- `pathname`是`pages`目录中的页面名称。`/blog/[slug]`在这种情况下。
+- `query`是一个带有动态段的对象。`slug`在这种情况下。
 
-## Injecting the router
+## 注入路由器
 
 :::details 示例
 - [Dynamic Routing](https://github.com/vercel/next.js/tree/canary/examples/dynamic-routing)
 :::
 
-To access the[`router`object](/docs/guide/api-reference/next/router#router-object)in a React component you can use[`useRouter`](/docs/guide/api-reference/next/router#userouter)or[`withRouter`](/docs/guide/api-reference/next/router#withrouter).
+要访问 React 组件中的[`router`object](/docs/guide/api-reference/next/router#router-object)，您可以使用[`useRouter`](/docs/guide/api-reference/next/router#userouter)或[`withRouter`](/docs/guide/api-reference/next/router#withrouter).
 
-In general we recommend using[`useRouter`](/docs/guide/api-reference/next/router#userouter).
+一般来说，我们建议使用[`useRouter`](/docs/guide/api-reference/next/router#userouter).
 
-## Learn more
+## 学到更多
 
-The router is divided in multiple parts:
+路由器分为多个部分：
 
 
 

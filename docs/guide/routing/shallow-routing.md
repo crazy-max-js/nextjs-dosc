@@ -1,14 +1,14 @@
-# Shallow Routing
+# 浅路由
 
 :::details 示例
 - [Shallow Routing](https://github.com/vercel/next.js/tree/canary/examples/with-shallow-routing)
 :::
 
-Shallow routing allows you to change the URL without running data fetching methods again, that includes[`getServerSideProps`](/docs/guide/basic-features/data-fetching/get-server-side-props),[`getStaticProps`](/docs/guide/basic-features/data-fetching/get-static-props), and[`getInitialProps`](/docs/guide/api-reference/data-fetching/get-initial-props).
+浅路由允许您更改URL而无需再次运行数据获取方法，包括[`getServerSideProps`](/docs/guide/basic-features/data-fetching/get-server-side-props),[`getStaticProps`](/docs/guide/basic-features/data-fetching/get-static-props)和[`getInitialProps`](/docs/guide/api-reference/data-fetching/get-initial-props).
 
-You'll receive the updated`pathname`and the`query`via the[`router`object](/docs/guide/api-reference/next/router#router-object)(added by[`useRouter`](/docs/guide/api-reference/next/router#userouter)or[`withRouter`](/docs/guide/api-reference/next/router#withrouter)), without losing state.
+你将通过[`router`对象](/docs/guide/api-reference/next/router#router-object)(由[`useRouter`](/docs/guide/api-reference/next/router#userouter)或[`withRouter`](/docs/guide/api-reference/next/router#withrouter)添加)接收更新后的`pathname`和`query`，而不会丢失状态。
 
-To enable shallow routing, set the`shallow`option to`true`. Consider the following example:
+要启用浅路由，请将`shallow`选项设置为`true`。考虑下面的例子:
 
 ```jsx
 import { useEffect } from 'react'
@@ -29,12 +29,11 @@ function Page() {
 }
 
 export default Page
-
 ```
 
-The URL will get updated to`/?counter=10`. and the page won't get replaced, only the state of the route is changed.
+URL将被更新为`/?counter=10`。页面不会被替换，只有路由的状态被改变。
 
-You can also watch for URL changes via[`componentDidUpdate`](https://reactjs.org/docs/react-component.html#componentdidupdate)as shown below:
+你也可以通过[`componentDidUpdate`](https://reactjs.org/docs/react-component.html#componentdidupdate)查看URL的变化，如下所示:
 
 ```jsx
 componentDidUpdate(prevProps) {
@@ -44,18 +43,16 @@ componentDidUpdate(prevProps) {
     // fetch data based on the new query
   }
 }
-
 ```
 
-## Caveats
+## 说明
 
-Shallow routing**only**works for URL changes in the current page. For example, let's assume we have another page called`pages/about.js`, and you run this:
+浅路由**仅**适用于当前页面中的URL更改。例如，假设我们有另一个名为`pages/about.js`的页面，你运行这个:
 
 ```jsx
 router.push('/?counter=10', '/about?counter=10', { shallow: true })
-
 ```
 
-Since that's a new page, it'll unload the current page, load the new one and wait for data fetching even though we asked to do shallow routing.
+因为这是一个新页面，它将卸载当前页面，加载新页面并等待数据获取，尽管我们要求进行浅路由。
 
-When shallow routing is used with middleware it will not ensure the new page matches the current page like previously done without middleware. This is due to middleware being able to rewrite dynamically and can't be verified client-side without a data fetch which is skipped with shallow, so a shallow route change must always be treated as shallow.
+当浅路由与中间件一起使用时，它不会像之前在没有中间件的情况下所做的那样确保新页面与当前页面匹配。这是因为中间件能够动态重写，如果没有被shallow跳过的数据获取，就无法在客户端进行验证，所以一个shallow路由更改必须始终被视为shallow。

@@ -4,9 +4,9 @@
 - [Using Router](https://github.com/vercel/next.js/tree/canary/examples/using-router)
 :::
 
-[`next/link`](/docs/guide/api-reference/next/link)should be able to cover most of your routing needs, but you can also do client-side navigations without it, take a look at the[documentation for`next/router`](/docs/guide/api-reference/next/router).
+[`next/link`](/docs/guide/api-reference/next/link)该能够覆盖你的大部分路由需求，但你也可以在没有它的情况下做客户端导航，看看[`next/router`的文档](/docs/guide/api-reference/next/router).
 
-The following example shows how to do basic page navigations with[`useRouter`](/docs/guide/api-reference/next/router#userouter):
+下面的例子展示了如何使用[`useRouter`](/docs/guide/api-reference/next/router#userouter)进行基本的页面导航:
 
 ```jsx
 import { useRouter } from 'next/router'
@@ -20,5 +20,4 @@ export default function ReadMore() {
     </button>
   )
 }
-
 ```

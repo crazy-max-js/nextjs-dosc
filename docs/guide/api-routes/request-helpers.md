@@ -1,16 +1,19 @@
-# API Routes Request Helpers
+# API路由请求辅助程序
 
 :::details 示例
-- [API Routes Request Helpers](https://github.com/vercel/next.js/tree/canary/examples/api-routes-middleware)- [API Routes with CORS](https://github.com/vercel/next.js/tree/canary/examples/api-routes-cors)
+- [API Routes Request Helpers](https://github.com/vercel/next.js/tree/canary/examples/api-routes-middleware)
+- [API Routes with CORS](https://github.com/vercel/next.js/tree/canary/examples/api-routes-cors)
 :::
 
-API Routes provide built-in request helpers which parse the incoming request (`req`):
+API路由提供了内置的请求帮助器，用于解析传入的请求
 
-- `req.cookies`- An object containing the cookies sent by the request. Defaults to`{}`- `req.query`- An object containing the[query string](https://en.wikipedia.org/wiki/Query_string). Defaults to`{}`- `req.body`- An object containing the body parsed by`content-type`, or`null`if no body was sent
+- `req.cookies`- 包含由请求发送的cookie的对象。默认为`{}`
+- `req.query`- 包含[查询字符串](https://en.wikipedia.org/wiki/Query_string)的对象。默认为`{}`
+- `req.body`- 包含由`content-type`解析的正文的对象，如果没有发送正文则为`null`。
 
-## Custom config
+## 自定义配置
 
-Every API Route can export a`config`object to change the default configuration, which is the following:
+每个API Route都可以导出一个`config`对象来更改默认配置，如下所示:
 
 ```js
 export const config = {
@@ -20,14 +23,13 @@ export const config = {
     },
   },
 }
-
 ```
 
-The`api`object includes all config options available for API Routes.
+`api`对象包括API路由可用的所有配置选项。
 
-`bodyParser`is automatically enabled. If you want to consume the body as a`Stream`or with[`raw-body`](https://www.npmjs.com/package/raw-body), you can set this to`false`.
+`bodyParser`会自动启用。如果你想将body作为`Stream`或使用[`raw-body`](https://www.npmjs.com/package/raw-body)消耗，你可以将此设置为`false`。
 
-One use case for disabling the automatic`bodyParsing`is to allow you to verify the raw body of a**webhook**request, for example[from GitHub](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks#validating-payloads-from-github).
+禁用自动`bodyParsing`的一个用例是允许你验证一个**webhook**请求的原始主体，例如[来自GitHub](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks#validating-payloads-from-github)。
 
 ```js
 export const config = {
@@ -35,10 +37,9 @@ export const config = {
     bodyParser: false,
   },
 }
-
 ```
 
-`bodyParser.sizeLimit`is the maximum size allowed for the parsed body, in any format supported by[bytes](https://github.com/visionmedia/bytes.js), like so:
+`bodyParser.sizeLimit`是被解析体允许的最大大小，以[bytes](https://github.com/visionmedia/bytes.js)支持的任何格式，如下所示:
 
 ```js
 export const config = {
@@ -48,10 +49,9 @@ export const config = {
     },
   },
 }
-
 ```
 
-`externalResolver`is an explicit flag that tells the server that this route is being handled by an external resolver likeexpressorconnect. Enabling this option disables warnings for unresolved requests.
+`externalResolver`是一个显式标志，它告诉服务器此路由正在由一个外部解析器处理，如likeexpressorconnect。启用此选项将禁用未解析请求的警告。
 
 ```js
 export const config = {
@@ -59,12 +59,11 @@ export const config = {
     externalResolver: true,
   },
 }
-
 ```
 
-`responseLimit`is automatically enabled, warning when an API Routes' response body is over 4MB.
+`responseLimit`是自动启用的，当API路由的响应体超过4MB时发出警告。
 
-If you are not using Next.js in a serverless environment, and understand the performance implications of not using a CDN or dedicated media host, you can set this limit to`false`.
+如果你没有在无服务器环境中使用Next.js，并且理解不使用CDN或专用媒体主机的性能影响，你可以将此限制设置为`false`.
 
 ```js
 export const config = {
@@ -72,11 +71,10 @@ export const config = {
     responseLimit: false,
   },
 }
-
 ```
 
-`responseLimit`can also take the number of bytes or any string format supported by`bytes`, for example`1000`,`'500kb'`or`'3mb'`.
-This value will be the maximum response size before a warning is displayed. Default is 4MB. (see above)
+`responseLimit`也可以接受`bytes`支持的字节数或任何字符串格式，例如`1000`,`'500kb'`或`'3mb'`.
+此值将是显示警告之前的最大响应大小。默认为4MB。(见上图)
 
 ```js
 export const config = {
@@ -84,12 +82,11 @@ export const config = {
     responseLimit: '8mb',
   },
 }
-
 ```
 
-## Extending the req/res objects with TypeScript
+## 使用TypeScript扩展req/res对象
 
-For better type-safety, it is not recommended to extend the`req`and`res`objects. Instead, use functions to work with them:
+为了更好的类型安全，不建议扩展`req`和`res`对象。相反，使用函数来处理它们:
 
 ```ts
 // utils/cookies.ts
@@ -131,10 +128,9 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default handler
-
 ```
 
-If you can't avoid these objects from being extended, you have to create your own type to include the extra properties:
+如果你不能避免这些对象被扩展，你必须创建自己的类型来包含额外的属性:
 
 ```ts
 // pages/api/foo.ts
@@ -152,7 +148,6 @@ const handler = (req: NextApiRequestWithFoo, res: NextApiResponse) => {
 }
 
 export default withFoo(handler)
-
 ```
 
-Keep in mind this is not safe since the code will still compile even if you remove`withFoo()`from the export.
+请记住，这是不安全的，因为即使你从导出中删除了`withFoo()`，代码仍然会编译。

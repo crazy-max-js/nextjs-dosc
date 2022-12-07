@@ -5,6 +5,7 @@ import { getDirname, path } from '@vuepress/utils'
 import { sidebar } from "./router";
 import { commentPlugin } from "vuepress-plugin-comment2";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+import sitemapPlugin from "vuepress-plugin-sitemap2";
 
 const __dirname = getDirname(import.meta.url)
 
@@ -65,5 +66,8 @@ export default defineUserConfig({
     googleAnalyticsPlugin({
       id: 'G-4EC0D6T29F'
     }),
+    sitemapPlugin({
+      hostname: 'https://nextjs.xiaofany.com'
+    })
   ]
 });

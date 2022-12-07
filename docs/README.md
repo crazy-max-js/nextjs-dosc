@@ -6,6 +6,8 @@ comment: false
 home: true
 heroText: 用于生产的React框架
 tagline: Next.js 为您提供生产所需的所有功能的最佳开发人员体验：混合静态和服务器渲染、TypeScript 支持、智能捆绑、路由预取等。无需配置。
+footer: <div>Copyright © 2022 Next.js中文文档 <a href='http://www.beian.miit.gov.cn/' target="_blank">鲁ICP备17049248号-1</a> · Powered By VuePress</div>
+footerHtml: true
 actions:
 - text: 快速上手
   link: /guide/getting-started.html
@@ -37,3 +39,4 @@ features:
 - title: 中间件
   details: 由代码而不是配置定义的动态路由。
 ---
+

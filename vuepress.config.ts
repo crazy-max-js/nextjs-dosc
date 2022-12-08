@@ -1,7 +1,7 @@
 import { defineUserConfig, defaultTheme } from "vuepress";
 import { searchPlugin } from '@vuepress/plugin-search'
 // import { registerComponentsPlugin } from "@vuepress/plugin-register-components";
-import { getDirname, path } from '@vuepress/utils'
+import { getDirname } from '@vuepress/utils'
 import { sidebar } from "./router";
 import { commentPlugin } from "vuepress-plugin-comment2";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
@@ -16,6 +16,9 @@ export default defineUserConfig({
   description: "阅读官方文档快速上手 Next.js，并了解所有功能的详细信息！",
   head:[
       ['meta',{name:'keywords',content:'Next.js中文文档, Next.js中文网'}]
+  ],
+  head: [
+    ['link', {rel: 'icon', href: '/favicon.ico'}]
   ],
   locales: {
     // 键名是该语言所属的子路径

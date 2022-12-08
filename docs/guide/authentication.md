@@ -1,20 +1,26 @@
-# Authentication
+# 身份验证
 
-Authentication verifies who a user is, while authorization controls what a user can access. Next.js supports multiple authentication patterns, each designed for different use cases. This page will go through each case so that you can choose based on your constraints.
+身份验证验证用户是谁，而授权控制用户可以访问什么。js支持多种身份验证模式，每种模式都是为不同的用例设计的。本页将详细介绍每种情况，以便您可以根据约束条件进行选择。
 
-## Authentication Patterns
+## 身份验证模式
 
-The first step to identifying which authentication pattern you need is understanding the[data-fetching strategy](/docs/guide/basic-features/data-fetching/overview)you want. We can then determine which authentication providers support this strategy. There are two main patterns:
+确定需要哪种身份验证模式的第一步是理解所需的[数据获取策略](/guide/basic-features/data-fetching/overview)。
+然后，我们可以确定哪些身份验证提供程序支持此策略。主要有两种模式:
 
-- Use[static generation](/docs/guide/basic-features/pages#static-generation-recommended)to server-render a loading state, followed by fetching user data client-side.- Fetch user data[server-side](/docs/guide/basic-features/pages#server-side-rendering)to eliminate a flash of unauthenticated content.
+- 使用[静态生成](/guide/basic-features/pages#static-generation-recommended)服务器呈现加载状态，然后在客户端获取用户数据。
+- 获取用户数据[服务器端](/guide/basic-features/pages#server-side-rendering)以消除未经身份验证的内容。
 
-### Authenticating Statically Generated Pages
+### 验证静态生成的页面
 
-Next.js automatically determines that a page is static if there are no blocking data requirements. This means the absence of[`getServerSideProps`](/docs/guide/basic-features/data-fetching/get-server-side-props)and`getInitialProps`in the page. Instead, your page can render a loading state from the server, followed by fetching the user client-side.
+如果没有阻塞数据需求，js会自动确定页面是静态的。
+这意味着在页面中没有[`getServerSideProps`](/guide/basic-features/data-fetching/get-server-side-props)和`getInitialProps`。
+相反，您的页面可以呈现来自服务器的加载状态，然后获取用户客户端。
 
-One advantage of this pattern is it allows pages to be served from a global CDN and preloaded using[`next/link`](/docs/guide/api-reference/next/link). In practice, this results in a faster TTI ([Time to Interactive](https://web.dev/interactive/)).
+这种模式的一个优点是它允许从全局CDN提供页面，并使用[`next/link`](/guide/api-reference/next/link)预加载。
+在实践中，这会导致更快的TTI ([交互时间](https://web.dev/interactive/)).
 
-Let's look at an example for a profile page. This will initially render a loading skeleton. Once the request for a user has finished, it will show the user's name:
+让我们看一个配置文件页面的例子。这将最初呈现一个加载骨架。
+一旦对用户的请求完成，它将显示用户的名称:
 
 ```jsx
 // pages/profile.js
@@ -41,14 +47,14 @@ const Profile = () => {
 }
 
 export default Profile
-
 ```
 
-You can view this[example in action](https://iron-session-example.vercel.app/). Check out the[`with-iron-session`](https://github.com/vercel/next.js/tree/canary/examples/with-iron-session)example to see how it works.
+您可以查看此[实际示例](https://iron-session-example.vercel.app/)。
+查看[`with-iron-session`](https://github.com/vercel/next.js/tree/canary/examples/with-iron-session)示例，了解它是如何工作的。
 
-### Authenticating Server-Rendered Pages
+### 验证服务器呈现的页面
 
-If you export an`async`function called[`getServerSideProps`](/docs/guide/basic-features/data-fetching/get-server-side-props)from a page, Next.js will pre-render this page on each request using the data returned by`getServerSideProps`.
+如果你从一个页面导出一个名为[`getServerSideProps`](/guide/basic-features/data-fetching/get-server-side-props)的`async`函数，Next.js将在每个请求时使用`getServerSideProps`返回的数据预渲染该页。
 
 ```jsx
 export async function getServerSideProps(context) {
@@ -56,10 +62,11 @@ export async function getServerSideProps(context) {
     props: {}, // Will be passed to the page component as props
   }
 }
-
 ```
 
-Let's transform the profile example to use[server-side rendering](/docs/guide/basic-features/pages#server-side-rendering). If there's a session, return`user`as a prop to the`Profile`component in the page. Notice there is not a loading skeleton in[this example](https://iron-session-example.vercel.app/).
+让我们将概要文件示例转换为使用[服务器端渲染](/guide/basic-features/pages#server-side-rendering).
+如果有会话，返回`user`作为页面中的`Profile`组件的道具。
+注意在[这个例子](https://iron-session-example.vercel.app/)中没有加载框架。
 
 ```jsx
 // pages/profile.js
@@ -95,40 +102,53 @@ const Profile = ({ user }) => {
 }
 
 export default Profile
-
 ```
 
-An advantage of this pattern is preventing a flash of unauthenticated content before redirecting. It's important to note fetching user data in`getServerSideProps`will block rendering until the request to your authentication provider resolves. To prevent creating a bottleneck and increasing your TTFB ([Time to First Byte](https://web.dev/time-to-first-byte/)), you should ensure your authentication lookup is fast. Otherwise, consider[static generation](#authenticating-statically-generated-pages).
+这种模式的一个优点是防止在重定向之前出现未经身份验证的内容。
+需要注意的是，在`getServerSideProps`中获取用户数据将阻塞呈现，直到对身份验证提供程序的请求得到解决。
+为了防止产生瓶颈并增加TTFB([到第一个字节的时间](https://web.dev/time-to-first-byte/))，您应该确保您的身份验证查找是快速的。
+否则，考虑[静态生成](#authenticating-statically-generated-pages).
 
-## Authentication Providers
+## 身份验证提供者
 
-Now that we've discussed authentication patterns, let's look at specific providers and explore how they're used with Next.js.
+既然我们已经讨论了身份验证模式，那么让我们看看具体的提供程序，并探索如何在Next.js中使用它们。
 
-### Bring Your Own Database
-
-:::details 示例
-- [with-iron-session](https://github.com/vercel/next.js/tree/canary/examples/with-iron-session)- [next-auth-example](https://github.com/nextauthjs/next-auth-example)
-:::
-
-If you have an existing database with user data, you'll likely want to utilize an open-source solution that's provider agnostic.
-
-- If you want a low-level, encrypted, and stateless session utility use[`iron-session`](https://github.com/vercel/next.js/tree/canary/examples/with-iron-session).- If you want a full-featured authentication system with built-in providers (Google, Facebook, GitHub…), JWT, JWE, email/password, magic links and more… use[`next-auth`](https://github.com/nextauthjs/next-auth-example).
-
-Both of these libraries support either authentication pattern. If you're interested in[Passport](http://www.passportjs.org/), we also have examples for it using secure and encrypted cookies:
-
-- [with-passport](https://github.com/vercel/next.js/tree/canary/examples/with-passport)- [with-passport-and-next-connect](https://github.com/vercel/next.js/tree/canary/examples/with-passport-and-next-connect)
-
-### Other Providers
-
-To see examples with other authentication providers, check out the[examples folder](https://github.com/vercel/next.js/tree/canary/examples).
+### 自带数据库
 
 :::details 示例
-- [Auth0](https://github.com/vercel/next.js/tree/canary/examples/auth0)- [Clerk](https://github.com/vercel/next.js/tree/canary/examples/with-clerk)- [Firebase](https://github.com/vercel/next.js/tree/canary/examples/with-firebase-authentication)- [Magic](https://github.com/vercel/next.js/tree/canary/examples/with-magic)- [Nhost](https://github.com/vercel/next.js/tree/canary/examples/with-nhost-auth-realtime-graphql)- [Ory](https://github.com/vercel/examples/tree/main/solutions/auth-with-ory)- [Supabase](https://github.com/vercel/next.js/tree/canary/examples/with-supabase-auth-realtime-db)- [Supertokens](https://github.com/vercel/next.js/tree/canary/examples/with-supertokens)- [Userbase](https://github.com/vercel/next.js/tree/canary/examples/with-userbase)
+- [with-iron-session](https://github.com/vercel/next.js/tree/canary/examples/with-iron-session)
+- [next-auth-example](https://github.com/nextauthjs/next-auth-example)
 :::
 
-## Related
+如果您有一个包含用户数据的现有数据库，那么您可能希望利用与提供者无关的开源解决方案。
 
-For more information on what to do next, we recommend the following sections:
+- 如果您想要一个低级的、加密的、无状态的会话实用程序，请使用[`iron-session`](https://github.com/vercel/next.js/tree/canary/examples/with-iron-session)。
+- 如果你想要一个功能齐全的认证系统，内置提供商(谷歌，Facebook, GitHub…)，JWT, JWE，电子邮件/密码，魔术链接和更多…使用[`next-auth`](https://github.com/nextauthjs/next-auth-example)。
+
+这两个库都支持任意一种身份验证模式。如果您对[Passport](http://www.passportjs.org/)感兴趣，我们还提供了使用安全和加密cookie的示例:
+
+- [with-passport](https://github.com/vercel/next.js/tree/canary/examples/with-passport)
+- [with-passport-and-next-connect](https://github.com/vercel/next.js/tree/canary/examples/with-passport-and-next-connect)
+
+### 其他供应商
+
+要查看其他身份验证提供者的示例，请签出[examples文件夹](https://github.com/vercel/next.js/tree/canary/examples).
+
+:::details 示例
+- [Auth0](https://github.com/vercel/next.js/tree/canary/examples/auth0)
+- [Clerk](https://github.com/vercel/next.js/tree/canary/examples/with-clerk)
+- [Firebase](https://github.com/vercel/next.js/tree/canary/examples/with-firebase-authentication)
+- [Magic](https://github.com/vercel/next.js/tree/canary/examples/with-magic)
+- [Nhost](https://github.com/vercel/next.js/tree/canary/examples/with-nhost-auth-realtime-graphql)
+- [Ory](https://github.com/vercel/examples/tree/main/solutions/auth-with-ory)
+- [Supabase](https://github.com/vercel/next.js/tree/canary/examples/with-supabase-auth-realtime-db)
+- [Supertokens](https://github.com/vercel/next.js/tree/canary/examples/with-supertokens)
+- [Userbase](https://github.com/vercel/next.js/tree/canary/examples/with-userbase)
+:::
+
+## 联系
+
+关于接下来要做的更多信息，我们推荐以下部分:
 
 
 

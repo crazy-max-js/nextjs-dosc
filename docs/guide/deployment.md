@@ -1,42 +1,66 @@
-# Deployment
+# 部署
 
-Congratulations, you are ready to deploy your Next.js application to production. This document will show how to deploy either managed or self-hosted using the[Next.js Build API](#nextjs-build-api).
+恭喜您，您已经准备好将Next.js应用程序部署到生产环境中了。本文档将展示如何使用[Next.js构建API](#nextjs-build-api)部署托管或自托管。
 
 ## Next.js Build API
 
-`next build`generates an optimized version of your application for production. This standard output includes:
+`next build`生成用于生产的应用程序的优化版本。该标准输出包括:
 
-- HTML files for pages using`getStaticProps`or[Automatic Static Optimization](/docs/guide/advanced-features/automatic-static-optimization)- CSS files for global styles or for individually scoped styles- JavaScript for pre-rendering dynamic content from the Next.js server- JavaScript for interactivity on the client-side through React
+- 使用`getStaticProps`或[自动静态优化](/guide/advanced-features/automatic-static-optimization)的页面的HTML文件
+- 用于全局样式或单独作用域样式的CSS文件
+- JavaScript用于预渲染来自Next.js服务器的动态内容
+- JavaScript在客户端通过React实现交互性
 
-This output is generated inside the`.next`folder:
+这个输出是在`.next`文件夹中生成的:
 
-- `.next/static/chunks/pages`– Each JavaScript file inside this folder relates to the route with the same name. For example,`.next/static/chunks/pages/about.js`would be the JavaScript file loaded when viewing the`/about`route in your application- `.next/static/media`– Statically imported images from`next/image`are hashed and copied here- `.next/static/css`– Global CSS files for all pages in your application- `.next/server/pages`– The HTML and JavaScript entry points prerendered from the server. The`.nft.json`files are created when[Output File Tracing](/docs/guide/advanced-features/output-file-tracing)is enabled and contain all the file paths that depend on a given page.- `.next/server/chunks`– Shared JavaScript chunks used in multiple places throughout your application- `.next/cache`– Output for the build cache and cached images, responses, and pages from the Next.js server. Using a cache helps decrease build times and improve performance of loading images
+- `.next/static/chunks/pages`
+- 这个文件夹中的每个JavaScript文件都与同名路由相关。例如，`.next/static/chunks/pages/about.js`将是在应用程序中查看`/about`路由时加载的JavaScript文件
+- `.next/static/media`
+- 从`next/image`静态导入的图像在这里被散列并复制
+- `.next/static/css`
+- 应用程序中所有页面的全局CSS文件
+- `.next/server/pages`
+- T从服务器预呈现的HTML和JavaScript入口点。`.nft.json`当[输出文件跟踪](/guide/advanced-features/output-file-tracing)启用时，将创建文件，并包含依赖于给定页面的所有文件路径。
+- `.next/server/chunks`
+- 在整个应用程序的多个位置使用的共享JavaScript块
+- `.next/cache`
+- 来自Next.js服务器的构建缓存和缓存的图像、响应和页面的输出。使用缓存有助于减少构建时间并提高加载图像的性能
 
-All JavaScript code inside`.next`has been**compiled**and browser bundles have been**minified**to help achieve the best performance and support[all modern browsers](/docs/guide/basic-features/supported-browsers-features).
+里面都是JavaScript代码`.next`已被**编译**，浏览器包已被**缩小**以帮助实现最佳性能并支持[所有现代浏览器](/guide/basic-features/supported-browsers-features).
 
-## Managed Next.js with Vercel
+## 使用Vercel管理Next.js
 
-[Vercel](https://vercel.com?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)is the fastest way to deploy your Next.js application with zero configuration.
+[Vercel](https://vercel.com?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)是零配置部署Next.js应用程序的最快方式。
 
-When deploying to Vercel, the platform[automatically detects Next.js](https://vercel.com/solutions/nextjs?utm_source=next-site&utm_medium=docs&utm_campaign=next-website), runs`next build`, and optimizes the build output for you, including:
+当部署到Vercel时，平台[自动检测Next.js](https://vercel.com/solutions/nextjs?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)，运行`next build`，并为您优化构建输出，包括:
 
-- Persisting cached assets across deployments if unchanged- [Immutable deployments](https://vercel.com/features/previews?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)with a unique URL for every commit- [Pages](/docs/guide/basic-features/pages)are automatically statically optimized, if possible- Assets (JavaScript, CSS, images, fonts) are compressed and served from a[Global Edge Network](https://vercel.com/features/infrastructure?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)- [API Routes](/docs/guide/api-routes/introduction)are automatically optimized as isolated[Serverless Functions](https://vercel.com/features/infrastructure?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)that can scale infinitely- [Middleware](/docs/middleware)are automatically optimized as[Edge Functions](https://vercel.com/features/edge-functions?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)that have zero cold starts and boot instantly
+- 如果未更改，则跨部署持久化缓存资产
+- [不可变的部署](https://vercel.com/features/previews?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)每次提交都有一个唯一的URL
+- [页面](/guide/basic-features/pages)自动静态优化，如果可能-资产(JavaScript, CSS，图像，字体)压缩并从[全球边缘网络](https://vercel.com/features/infrastructure?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)提供服务
+- [API路由](/guide/api-routes/introduction)被自动优化为独立的[无服务器函数](https://vercel.com/features/infrastructure?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)，可以无限扩展
+- [中间件](/middleware)被自动优化为[边缘函数](https://vercel.com/features/edge-functions?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)，具有零冷启动和立即启动
 
-In addition, Vercel provides features like:
+此外，Vercel还提供了以下特性:
 
-- Automatic performance monitoring with[Next.js Analytics](https://vercel.com/analytics?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)- Automatic HTTPS and SSL certificates- Automatic CI/CD (through GitHub, GitLab, Bitbucket, etc.)- Support for[Environment Variables](https://vercel.com/docs/environment-variables?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)- Support for[Custom Domains](https://vercel.com/docs/custom-domains?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)- Support for[Image Optimization](/docs/guide/basic-features/image-optimization)with`next/image`- Instant global deployments via`git push`
+- 使用[Next.js Analytics](https://vercel.com/analytics?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)自动性能监控
+- 自动HTTPS和SSL证书
+- 自动CI/CD(通过GitHub, GitLab, Bitbucket等)
+- 支持[环境变量](https://vercel.com/docs/environment-variables?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)
+- 支持[自定义域](https://vercel.com/docs/custom-domains?utm_source=next-site&utm_medium=docs&utm_campaign=next-website)
+- 支持[图像优化](/guide/basic-features/image-optimization)与`next/image`
+- 通过`git push`实现即时全球部署
 
-[Deploy a Next.js application to Vercel](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/hello-world&project-name=hello-world&repository-name=hello-world&utm_source=next-site&utm_medium=docs&utm_campaign=next-website)for free to try it out.
+[将Next.js应用程序部署到Vercel](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/hello-world&project-name=hello-world&repository-name=hello-world&utm_source=next-site&utm_medium=docs&utm_campaign=next-website)免费试用。
 
-## Self-Hosting
+## 自托管
 
-You can self-host Next.js with support for all features using Node.js or Docker. You can also do a Static HTML Export, which[has some limitations](/docs/guide/advanced-features/static-html-export).
+你可以使用Node.js或Docker自宿主支持所有功能的Next.js。你也可以做一个静态HTML导出，它[有一些限制](/guide/advanced-features/static-html-export)。
 
-### Node.js Server
+### Node.js服务器
 
-Next.js can be deployed to any hosting provider that supports Node.js. For example,[AWS EC2](https://aws.amazon.com/ec2/)or a[DigitalOcean Droplet](https://www.digitalocean.com/products/droplets/).
+Next.js可以部署到任何支持Node.js的托管提供商。例如，[AWS EC2](https://aws.amazon.com/ec2/)或[DigitalOcean Droplet](https://www.digitalocean.com/products/droplets/).
 
-First, ensure your`package.json`has the`"build"`and`"start"`scripts:
+首先，确保你的`package.json`有`"build"`和`"start"`的脚本：
 
 ```json
 {
@@ -46,62 +70,78 @@ First, ensure your`package.json`has the`"build"`and`"start"`scripts:
     "start": "next start"
   }
 }
-
 ```
 
-Then, run`next build`to build your application. Finally, run`next start`to start the Node.js server. This server supports all features of Next.js.
+然后，运行`next build`来构建应用程序。最后，运行`next start`启动Node.js服务器。该服务器支持Next.js的所有功能。
 
-> If you are using[`next/image`](/docs/guide/basic-features/image-optimization), consider adding`sharp`for more performant[Image Optimization](/docs/guide/basic-features/image-optimization)in your production environment by running`npm install sharp`in your project directory. On Linux platforms,`sharp`may require[additional configuration](https://sharp.pixelplumbing.com/install#linux-memory-allocator)to prevent excessive memory usage.
+> 如果您正在使用[`next/image`](/guide/basic-features/image-optimization)，请考虑在您的生产环境中通过在项目目录中运行`npm install sharp`来增加`sharp`以获得更好的性能[图像优化](/guide/basic-features/image-optimization)。在Linux平台上，`sharp`可能需要[额外的配置](https://sharp.pixelplumbing.com/install#linux-memory-allocator)来防止过多的内存使用。
 
 ### Docker Image
 
-Next.js can be deployed to any hosting provider that supports[Docker](https://www.docker.com/)containers. You can use this approach when deploying to container orchestrators such as[Kubernetes](https://kubernetes.io/)or[HashiCorp Nomad](https://www.nomadproject.io/), or when running inside a single node in any cloud provider.
+Next.js可以部署到任何支持[Docker](https://www.docker.com/)容器的托管提供商。
+当部署到容器编配器如[Kubernetes](https://kubernetes.io/)或[HashiCorp Nomad](https://www.nomadproject.io/)时，或者在任何云提供商的单个节点中运行时，可以使用这种方法。
 
-- [Install Docker](https://docs.docker.com/get-docker/)on your machine- Clone the[with-docker](https://github.com/vercel/next.js/tree/canary/examples/with-docker)example- Build your container:`docker build -t nextjs-docker .`- Run your container:`docker run -p 3000:3000 nextjs-docker`
+- 在你的机器上[安装 Docker](https://docs.docker.com/get-docker/)
+- 克隆[with-docker](https://github.com/vercel/next.js/tree/canary/examples/with-docker)示例
+- 构建容器:`docker build -t nextjs-docker .`
+- 运行容器:`docker run -p 3000:3000 nextjs-docker`
 
-If you need to use different Environment Variables across multiple environments, check out our[with-docker-multi-env](https://github.com/vercel/next.js/tree/canary/examples/with-docker-multi-env)example.
+如果您需要在多个环境中使用不同的环境变量，请查看我们的[with-docker-multi-env](https://github.com/vercel/next.js/tree/canary/examples/with-docker-multi-env)示例。
 
-### Static HTML Export
+### 静态HTML导出
 
-If you’d like to do a static HTML export of your Next.js app, follow the directions on our[Static HTML Export documentation](/docs/guide/advanced-features/static-html-export).
+如果你想做一个静态HTML导出你的Next.js应用程序，遵循我们的[静态HTML导出文档](/guide/advanced-features/static-html-export).
 
-## Other Services
+## 其他服务
 
-The following services support Next.js`v12+`. Below, you’ll find examples or guides to deploy Next.js to each service.
+以下服务支持Next.js`v12+`。下面，您将找到将Next.js部署到每个服务的示例或指南。
 
-### Managed Server
+### 托管服务器
 
-- [AWS Copilot](https://aws.github.io/copilot-cli/)- [Digital Ocean App Platform](https://docs.digitalocean.com/tutorials/app-nextjs-deploy/)- [Google Cloud Run](https://github.com/vercel/next.js/tree/canary/examples/with-docker)- [Heroku](https://elements.heroku.com/buildpacks/mars/heroku-nextjs)- [Railway](https://railway.app/new/starters/nextjs-prisma)- [Render](https://render.com/docs/deploy-nextjs-app)
+- [AWS Copilot](https://aws.github.io/copilot-cli/)
+- [数字海洋App平台](https://docs.digitalocean.com/tutorials/app-nextjs-deploy/)
+- [谷歌云运行](https://github.com/vercel/next.js/tree/canary/examples/with-docker)
+- [Heroku](https://elements.heroku.com/buildpacks/mars/heroku-nextjs)
+- [Railway](https://railway.app/new/starters/nextjs-prisma)
+- [渲染](https://render.com/docs/deploy-nextjs-app)
 
-> **Note:**There are also managed platforms that allow you to use a Dockerfile as shown in the[example above](/docs/deployment#docker-image).
+> **注意:** 还有一些托管平台允许您使用Dockerfile，如[上面的示例](/deployment#docker-image)所示。
 
-### Static Only
+### 静态只
 
-The following services support deploying Next.js using[`next export`](/docs/guide/advanced-features/static-html-export).
+以下服务支持使用[`next export`](/guide/advanced-features/static-html-export).
 
-- [Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-a-nextjs-site/)- [Firebase](https://github.com/vercel/next.js/tree/canary/examples/with-firebase-hosting)- [GitHub Pages](https://github.com/vercel/next.js/tree/canary/examples/github-pages)
+- [Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-a-nextjs-site/)
+- [Firebase](https://github.com/vercel/next.js/tree/canary/examples/with-firebase-hosting)
+- [GitHub页面](https://github.com/vercel/next.js/tree/canary/examples/github-pages)
 
-You can also manually deploy the[`next export`](/docs/guide/advanced-features/static-html-export)output to any static hosting provider, often through your CI/CD pipeline like GitHub Actions, Jenkins, AWS CodeBuild, Circle CI, Azure Pipelines, and more.
+您还可以手动将[`next export`](/guide/advanced-features/static-html-export)输出部署到任何静态托管提供商，通常是通过您的CI/CD管道，如GitHub Actions, Jenkins, AWS CodeBuild, Circle CI, Azure pipeline等。
 
 ### Serverless
 
-- [AWS Serverless](https://github.com/serverless-nextjs/serverless-next.js)- [Azure Static Web Apps](https://learn.microsoft.com/en-us/azure/static-web-apps/nextjs)- [Terraform](https://github.com/milliHQ/terraform-aws-next-js)- [Netlify](https://docs.netlify.com/integrations/frameworks/next-js)
+- [AWS Serverless](https://github.com/serverless-nextjs/serverless-next.js)
+- [Azure静态Web应用程序](https://learn.microsoft.com/en-us/azure/static-web-apps/nextjs)
+- [Terraform](https://github.com/milliHQ/terraform-aws-next-js)
+- [Netlify](https://docs.netlify.com/integrations/frameworks/next-js)
 
-> **Note:**Not all serverless providers implement the[Next.js Build API](/docs/deployment#nextjs-build-api)from`next start`. Please check with the provider to see what features are supported.
+> **注意:** 不是所有的无服务器提供商都从`next start`开始实现[Next.js Build API](/deployment#nextjs-build-api)。
+请与供应商联系，了解支持哪些功能。
 
-## Automatic Updates
+## 自动更新
 
-When you deploy your Next.js application, you want to see the latest version without needing to reload.
+在部署Next.js应用程序时，您希望在不需要重新加载的情况下看到最新版本。
 
-Next.js will automatically load the latest version of your application in the background when routing. For client-side navigations,`next/link`will temporarily function as a normal`<a>`tag.
+当路由时，Next.js会在后台自动加载应用程序的最新版本。
+对于客户端导航，`next/link`将临时用作正常的`<a>`标签。
 
-**Note:**If a new page (with an old version) has already been prefetched by`next/link`, Next.js will use the old version. Navigating to a page that hasnotbeen prefetched (and is not cached at the CDN level) will load the latest version.
+> **注意:** 如果一个新页面(带有旧版本)已经被`next/link`预取，next .js将使用旧版本。
+导航到一个没有预取的页面(并且没有缓存在CDN级别)将加载最新版本。
 
-## Manual Graceful shutdowns
+## 手动安全停机
 
-Sometimes you might want to run some cleanup code on process signals like`SIGTERM`or`SIGINT`.
+有时候你可能想要在进程信号上运行一些清理代码，比如`SIGTERM`或`SIGINT`。
 
-You can do that by setting the env variable`NEXT_MANUAL_SIG_HANDLE`to`true`and then register a handler for that signal inside your`_document.js`file.
+你可以通过设置env变量`NEXT_MANUAL_SIG_HANDLE`为`true`然后在你的`_document.js`文件中为该信号注册一个处理程序。
 
 ```js
 // pages/_document.js
@@ -118,11 +158,10 @@ if (process.env.NEXT_MANUAL_SIG_HANDLE) {
     process.exit(0)
   })
 }
-
 ```
 
-## Related
+## 联系
 
-For more information on what to do next, we recommend the following sections:
+关于接下来要做的更多信息，我们推荐以下部分:
 
 

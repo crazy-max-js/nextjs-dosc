@@ -15,9 +15,7 @@ export default defineUserConfig({
   title: "Next.js中文文档",
   description: "阅读官方文档快速上手 Next.js，并了解所有功能的详细信息！",
   head:[
-      ['meta',{name:'keywords',content:'Next.js中文文档, Next.js中文网'}]
-  ],
-  head: [
+      ['meta',{name:'keywords',content:'Next.js中文文档, Next.js中文网'}],
     ['link', {rel: 'icon', href: '/favicon.ico'}]
   ],
   locales: {

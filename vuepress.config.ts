@@ -14,6 +14,9 @@ export default defineUserConfig({
   lang: "zh-CN",
   title: "Next.js中文文档",
   description: "阅读官方文档快速上手 Next.js，并了解所有功能的详细信息！",
+  head: [
+    ['link', {rel: 'icon', href: '/favicon.ico'}]
+  ],
   locales: {
     // 键名是该语言所属的子路径
     // 作为特例，默认语言可以使用 '/' 作为其路径。

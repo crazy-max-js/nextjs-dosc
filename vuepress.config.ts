@@ -1,7 +1,7 @@
 import { defineUserConfig, defaultTheme } from "vuepress";
 import { searchPlugin } from '@vuepress/plugin-search'
 // import { registerComponentsPlugin } from "@vuepress/plugin-register-components";
-import { getDirname, path } from '@vuepress/utils'
+import { getDirname } from '@vuepress/utils'
 import { sidebar } from "./router";
 import { commentPlugin } from "vuepress-plugin-comment2";
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
